@@ -198,13 +198,13 @@ export const ReportView: React.FC<ReportViewProps> = ({
               The Hidden Physical Weight of Intelligence: Features Architecture, Thermodynamic Principles, and Grid Hydrology
             </h1>
             <p className="report-lead-text">
-              An exhaustive scientific treatise documenting the design architecture, peer-reviewed mathematical formulations, empirical telemetry datasets, and thermodynamic principles powering the <strong>Aetheria Sustainable AI Platform</strong>.
+              An exhaustive scientific treatise documenting the design architecture, peer-reviewed mathematical formulations, empirical telemetry datasets, and thermodynamic principles powering the <strong>Sustainable AI Footprint Platform</strong>.
             </p>
 
             <div className="report-authors-bar">
               <div className="author-item">
                 <span className="author-role">Project Architecture:</span>
-                <span className="author-name">Aetheria AI Sustainability Research</span>
+                <span className="author-name">AI Sustainability Research</span>
               </div>
               <div className="author-item">
                 <span className="author-role">Empirical Models:</span>
@@ -223,7 +223,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
                 As generative artificial intelligence scales toward hundreds of billions of parameters, the computational demand of inference queries is exerting unprecedented pressure on electrical grids and municipal water supplies. Contrary to popular intuition, generative queries do not merely draw invisible electrons; they convert high-voltage electricity into thermal entropy that must be rejected into the biosphere through cooling towers, or off-site through the cooling water cycles of thermoelectric generation and reservoir evaporation.
               </p>
               <p>
-                This report documents the full feature architecture of the Aetheria interactive tracker, detailing how physical LLM inference is decomposed into its prefill and autoregressive decoding phases, how Scope-1 (on-site) and Scope-2 (off-site) water footprints are quantified, how diurnal solar-thermal trade-offs are modeled, and how Google CICS-inspired carbon-intelligent load shifting can eliminate millions of liters of wasted freshwater.
+                This report documents the full feature architecture of the interactive tracker, detailing how physical LLM inference is decomposed into its prefill and autoregressive decoding phases, how Scope-1 (on-site) and Scope-2 (off-site) water footprints are quantified, how diurnal solar-thermal trade-offs are modeled, and how Google CICS-inspired carbon-intelligent load shifting can eliminate millions of liters of wasted freshwater.
               </p>
             </div>
           </section>
@@ -233,7 +233,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
             <div className="section-index-pill">SECTION 02</div>
             <h2 className="section-heading">Platform Features & Architectural Catalog</h2>
             <p className="section-intro">
-              The Aetheria web platform is engineered as an explorable, mathematically rigorous scientific simulation. Below is an exhaustive catalog of every major module, feature, and interaction built into the platform:
+              This platform is engineered as an explorable, mathematically rigorous scientific simulation. Below is an exhaustive catalog of every major module, feature, and interaction built into the platform:
             </p>
 
             <div className="features-grid">
@@ -704,7 +704,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
             <div className="section-index-pill">SECTION 10</div>
             <h2 className="section-heading">Comprehensive Mathematical Formulations</h2>
             <p className="section-intro">
-              The following peer-reviewed formulas power every computation across the Aetheria platform:
+              The following peer-reviewed formulas power every computation across the platform:
             </p>
 
             <div className="formula-block-card">
@@ -814,7 +814,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
             <div className="section-index-pill">SECTION 12</div>
             <h2 className="section-heading">Academic Bibliography & Empirical Sources</h2>
             <p className="section-intro">
-              All quantitative metrics, scaling constants, and thermodynamic parameters utilized within Aetheria are derived from peer-reviewed scientific literature:
+              All quantitative metrics, scaling constants, and thermodynamic parameters utilized within this project are derived from peer-reviewed scientific literature:
             </p>
 
             <div className="bibliography-list">

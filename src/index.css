@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------------
-   AETHERIA: Sustainable AI Query Hydrology & Carbon Lab
+   AI Water & Energy Footprint Simulator
    Clean, Minimal, Light-Theme Design System
    -------------------------------------------------------------------------- */
 
@@ -269,62 +269,55 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   z-index: 1000;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  padding: 16px 0;
+  padding: 12px 0;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .brand-logo-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius);
   background: var(--text);
   color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-}
-
-.brand-text-block {
-  display: flex;
-  flex-direction: column;
+  flex-shrink: 0;
 }
 
 .brand-title {
-  font-size: 1.05rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
   color: var(--text);
-  line-height: 1.1;
-}
-
-.brand-badge-pill {
-  font-size: 0.6875rem;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .nav-tabs {
   display: flex;
   align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
+  gap: 4px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  flex-shrink: 1;
 }
 
 .nav-tab-btn {
@@ -332,14 +325,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   border: 1px solid transparent;
   color: var(--text-muted);
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: var(--radius);
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   text-decoration: none;
   transition: all 150ms ease;
   white-space: nowrap;
@@ -362,27 +355,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .header-actions-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .live-grid-capsule {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
-  padding: 6px 10px;
+  padding: 5px 9px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  white-space: nowrap;
 }
 
 .live-dot-green {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .nav-tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Subtle Context Ticker */

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   FileText,
   ArrowUpRight,
+  Activity,
 } from 'lucide-react';
 import { MACRO_FACTS } from '../data/presets';
 import type { WeatherRecommendation } from '../types';
@@ -28,14 +29,11 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
       <header className="app-header">
         <div className="container header-inner">
           {/* Brand Identity */}
-          <a href="#feature-query" className="brand-wrapper">
+          <a href="#feature-query" className="brand-wrapper" title="AI Water & Energy Simulator">
             <div className="brand-logo-icon">
-              <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>Æ</span>
+              <Activity size={15} />
             </div>
-            <div className="brand-text-block">
-              <div className="brand-title">AETHERIA</div>
-              <div className="brand-badge-pill">AI Water & Energy Simulator</div>
-            </div>
+            <span className="brand-title">AI Water & Energy Simulator</span>
           </a>
 
           {/* Clean Minimal Anchor Navigation to Feature Sections */}
@@ -44,10 +42,10 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
               <span>1. Query & Impact</span>
             </a>
             <a href="#feature-physics" className="nav-tab-btn">
-              <span>2. Where Water Goes</span>
+              <span>2. Water Cycle</span>
             </a>
             <a href="#feature-datacenters" className="nav-tab-btn">
-              <span>3. Global Datacenters</span>
+              <span>3. Datacenters</span>
             </a>
             <a href="#feature-formulas" className="nav-tab-btn">
               <span>4. The Math</span>

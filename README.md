@@ -1,4 +1,4 @@
-# AETHERIA | Sustainable AI Query Hydrology & Carbon Lab
+# AI Water & Energy Footprint Simulator
 
 > **Live Deployment:** [https://shashankshekhar9420-creator.github.io/ds-project/](https://shashankshekhar9420-creator.github.io/ds-project/)  
 > **Scientific Monograph:** [https://shashankshekhar9420-creator.github.io/ds-project/report.html](https://shashankshekhar9420-creator.github.io/ds-project/report.html)

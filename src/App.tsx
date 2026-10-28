@@ -392,7 +392,7 @@ export const App: React.FC = () => {
       <footer className="minimal-footer">
         <div className="container footer-inner">
           <div>
-            <strong>AETHERIA</strong> · An Educational AI Environmental Impact Simulator (© {CURRENT_YEAR}).
+            <strong>AI Water & Energy Simulator</strong> · An Educational AI Environmental Impact Project (© {CURRENT_YEAR}).
           </div>
           <ul className="footer-links">
             <li>

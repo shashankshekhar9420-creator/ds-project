@@ -81,23 +81,23 @@ export const ModuleASandbox: React.FC<ModuleASandboxProps> = ({
   const copyReceiptSummary = () => {
     const text = `🌿 Environmental Receipt for AI Query
 Model: ${model.name} (${model.parameters})
-Location: ${location.name} (PUE: ${calculation.effectivePUE.toFixed(2)})
+Location: ${location.name} (Facility overhead multiplier PUE: ${calculation.effectivePUE.toFixed(2)})
 Input: ${calculation.wordsIn} words (~${calculation.tokensIn} tokens)
 Output: ${calculation.wordsOut} words (~${calculation.tokensOut} tokens)
 
-⚡ Server Energy: ${calculation.energyWh.toFixed(2)} Wh (${(calculation.serverEnergyKWh * 1000).toFixed(2)} mWh)
-💧 Water Footprint (${waterMode}): ${calculation.displayedTotalWaterMl.toFixed(2)} mL
-   - Scope 1 (On-Site Cooling): ${calculation.displayedScope1WaterMl.toFixed(2)} mL (${calculation.scope1Percent}%)
-   - Scope 2 (Off-Site Grid): ${calculation.displayedScope2WaterMl.toFixed(2)} mL (${calculation.scope2Percent}%)
-☁️ Operational Carbon: ${calculation.carbonGrams.toFixed(2)} gCO2e
+⚡ Server Electricity: ${calculation.energyWh.toFixed(2)} Wh (${(calculation.serverEnergyKWh * 1000).toFixed(2)} mWh)
+💧 Water Footprint (${waterMode === 'consumption' ? 'Permanent Evaporation' : 'Total Withdrawn'}): ${calculation.displayedTotalWaterMl.toFixed(2)} mL
+   - Scope 1 On-Site: ${calculation.displayedScope1WaterMl.toFixed(2)} mL (${calculation.scope1Percent}%) evaporated in cooling towers
+   - Scope 2 Off-Site: ${calculation.displayedScope2WaterMl.toFixed(2)} mL (${calculation.scope2Percent}%) consumed by electricity power plants
+☁️ Carbon Emissions: ${calculation.carbonGrams.toFixed(2)} gCO2e
 
-Tangible Equivalents:
-- ${calculation.bottleFraction < 0.01 ? '<1%' : `${(calculation.bottleFraction * 100).toFixed(1)}%`} of a 500mL water bottle
+Everyday Equivalents:
+- ${calculation.bottleFraction < 0.01 ? '<1%' : `${(calculation.bottleFraction * 100).toFixed(1)}%`} of a standard 500 mL water bottle
 - ~${calculation.waterDrops} water drops
-- ${calculation.ledSeconds}s of 10W LED lightbulb runtime
-- ${calculation.smartphoneBatteryPercent.toFixed(2)}% smartphone battery recharge
+- ${calculation.ledSeconds} seconds powering a 10W LED lightbulb
+- ${calculation.smartphoneBatteryPercent.toFixed(2)}% of a full smartphone battery recharge
 
-Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2025)`;
+Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2025)`;
 
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -153,10 +153,10 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 <Sparkles size={16} />
               </div>
               <h2 className="font-display" style={{ fontSize: '1.15rem', fontWeight: 700 }}>
-                Live Prompt Sandbox
+                Interactive Query Calculator
               </h2>
             </div>
-            <span className="badge badge-cyan">No Live LLM API Required</span>
+            <span className="badge badge-cyan">Instant • Runs in your browser</span>
           </div>
 
           {/* Preset Chips */}
@@ -183,7 +183,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
               id="prompt-input"
               value={promptText}
               onChange={(e) => setPromptText(e.target.value)}
-              placeholder="Type or paste any query to immediately compute its thermodynamic footprint..."
+              placeholder="Type or paste any question or prompt here to calculate how much electricity, water, and carbon it takes to answer..."
             />
             <div className="prompt-meta-bar">
               <div className="meta-counters">
@@ -191,7 +191,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   <span>Input Words:</span>
                   <span className="meta-count-num">{calculation.wordsIn}</span>
                 </div>
-                <div className="meta-count-item">
+                <div className="meta-count-item" title="Tokens are word pieces (roughly 3/4 of an English word) that AI models read one by one.">
                   <span>Est. Tokens:</span>
                   <span className="meta-count-num">~{calculation.tokensIn}</span>
                 </div>
@@ -220,7 +220,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
           <div className="controls-grid" style={{ marginTop: '1.25rem' }}>
             <div className="control-group">
               <label className="control-label" htmlFor="model-select">
-                <span>AI Foundation Model</span>
+                <span>AI Model Size</span>
                 <span style={{ fontSize: '0.7rem', color: 'var(--energy-amber-light)' }}>
                   {model.parameters}
                 </span>
@@ -257,8 +257,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 >
                   <AlertTriangle size={13} style={{ flexShrink: 0 }} />
                   <span>
-                    <strong>Rebound Effect Warning:</strong> Xiao et al. (2025) note efficient
-                    models spur higher aggregate query frequency.
+                    <strong>The Efficiency Paradox (Rebound Effect):</strong> When models become cheaper and faster to run, people often ask many more questions. Total electricity and water use can actually rise unless overall usage is managed (Xiao et al., 2025).
                   </span>
                 </div>
               )}
@@ -267,8 +266,8 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
             <div className="control-group">
               <label className="control-label" htmlFor="location-select">
                 <span>Data Center Location</span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--water-cyan-light)' }}>
-                  PUE: {calculation.effectivePUE.toFixed(2)}
+                <span style={{ fontSize: '0.7rem', color: 'var(--water-cyan-light)' }} title="Facility overhead multiplier: How much total building energy is consumed per unit of server energy.">
+                  Overhead Multiplier (PUE): {calculation.effectivePUE.toFixed(2)}
                 </span>
               </label>
               <select
@@ -283,7 +282,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 {LOCATIONS.map((loc) => (
                   <option key={loc.id} value={loc.id}>
                     {loc.name} {loc.isOptimalCombined ? '★ (Optimal)' : ''}{' '}
-                    {loc.isWaterStressed ? '⚠️ (Water Stress)' : ''}{' '}
+                    {loc.isWaterStressed ? '⚠️ (Water Stressed)' : ''}{' '}
                     {loc.isHydropowerParadox ? '💧 (Hydro Paradox)' : ''}
                   </option>
                 ))}
@@ -338,7 +337,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                     <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#fff' }}>
-                      Query-Aware Model Sizing:
+                      Smarter Model Sizing:
                     </span>
                     <span
                       style={{
@@ -413,7 +412,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
             >
               <CheckCircle2 size={14} style={{ color: '#10b981', flexShrink: 0 }} />
               <span>
-                <strong style={{ color: '#10b981' }}>Model Right-Sized:</strong> {model.name} is well-matched for this {modelRecommendation.taskType} query without oversized parameter overhead.
+                <strong style={{ color: '#10b981' }}>Well Matched:</strong> {model.name} is well-suited for this {modelRecommendation.taskType} query without wasting power on an oversized model.
               </span>
             </div>
           )}
@@ -443,7 +442,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                     Weather Optimization: {weatherRecommendation.bestOverall.location.name} is cooler ({weatherRecommendation.bestOverall.weather.temperatureC}°C vs {weather?.temperatureC}°C)
                   </div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                    Rerouting saves <strong>{weatherRecommendation.bestOverall.waterSavingsVsCurrentPct}% water</strong> and <strong>{weatherRecommendation.bestOverall.carbonSavingsVsCurrentPct}% carbon</strong> per query.
+                    Cool outside air reduces the need for water chillers. Rerouting saves roughly <strong>{weatherRecommendation.bestOverall.waterSavingsVsCurrentPct}% water</strong> and <strong>{weatherRecommendation.bestOverall.carbonSavingsVsCurrentPct}% carbon</strong> per query.
                   </div>
                 </div>
               </div>
@@ -478,7 +477,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
             >
               <CheckCircle2 size={15} style={{ flexShrink: 0 }} />
               <span>
-                <strong>{location.name}</strong> currently offers the optimal global weather efficiency ({weather?.temperatureC}°C ambient).
+                <strong>{location.name}</strong> currently offers optimal weather efficiency ({weather?.temperatureC}°C ambient).
               </span>
             </div>
           )}
@@ -494,7 +493,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
               }}
             >
               <label className="control-label">
-                Expected Generation Output Length
+                Expected Answer Length
               </label>
               <span
                 style={{
@@ -551,6 +550,8 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '8px',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -565,16 +566,20 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                     color: 'var(--text-secondary)',
                   }}
                 >
-                  Two-Phase Energy Scaling Breakdown (Stojkovic / Li et al. 2025)
+                  Where Does the Energy Go? (Stojkovic / Li et al. 2025)
                 </span>
               </div>
-              <span className="badge badge-amber">Autoregressive Decoding Bound</span>
+              <span className="badge badge-amber">Generating words uses ~2.3× more energy than reading them</span>
             </div>
 
             {/* KaTeX formula for Phase Scaling */}
             <MathFormula
               formula={`e_t = E_{\\text{base}} \\cdot \\left( 0.30 \\cdot \\frac{W_{\\text{in}}}{800} + 0.70 \\cdot \\frac{W_{\\text{out}}}{225} \\right)`}
             />
+
+            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.75rem', lineHeight: 1.45 }}>
+              Reading your prompt accounts for ~30% of baseline energy, while writing the answer takes ~70%. Because the computer must review all its mathematical weights for each new word it writes, long answers use far more electricity than long questions.
+            </div>
 
             <div className="phase-bar-track">
               <div
@@ -583,7 +588,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 title={`Prompt Processing Phase: ${(calculation.promptEnergyFraction * 100).toFixed(1)}%`}
               >
                 {calculation.promptEnergyFraction > 0.15 &&
-                  `Prompt Phase ${(calculation.promptEnergyFraction * 100).toFixed(0)}%`}
+                  `Reading Phase ${(calculation.promptEnergyFraction * 100).toFixed(0)}%`}
               </div>
               <div
                 className="phase-token-bar"
@@ -591,7 +596,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 title={`Token Generation Phase: ${(calculation.tokenEnergyFraction * 100).toFixed(1)}%`}
               >
                 {calculation.tokenEnergyFraction > 0.15 &&
-                  `Decoding Phase ${(calculation.tokenEnergyFraction * 100).toFixed(0)}%`}
+                  `Answering Phase ${(calculation.tokenEnergyFraction * 100).toFixed(0)}%`}
               </div>
             </div>
 
@@ -600,12 +605,11 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 <div className="phase-item-header">
                   <div className="phase-dot-prompt" />
                   <span style={{ color: 'var(--energy-amber-light)' }}>
-                    1. Prompt Phase (Compute-Bound, 30% baseline)
+                    1. Reading Phase (Prompt Reading, ~30% base energy)
                   </span>
                 </div>
                 <p className="phase-desc">
-                  Parallel matrix operations (prefill) populating the KV cache across GPU tensor
-                  cores.
+                  The model reads your entire question all at once in parallel, organizing the key ideas into memory so it is ready to answer.
                 </p>
               </div>
 
@@ -613,12 +617,11 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 <div className="phase-item-header">
                   <div className="phase-dot-token" />
                   <span style={{ color: 'var(--water-cyan-light)' }}>
-                    2. Token Phase (Memory-Bound, 70% baseline)
+                    2. Answering Phase (Generating Words, ~70% base energy)
                   </span>
                 </div>
                 <p className="phase-desc">
-                  Sequential autoregressive token decoding reading billions of weights from HBM3
-                  memory for every single output word.
+                  The model generates the answer one word piece at a time. For every single piece it writes, it must reload tens of billions of numbers from high-speed memory.
                 </p>
               </div>
             </div>
@@ -630,7 +633,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
       <div className="receipt-wrapper">
         <div className="receipt-card" id="environmental-receipt">
           <div className="receipt-header">
-            <div className="receipt-badge-title">Official Scientific Accounting</div>
+            <div className="receipt-badge-title">Calculated Impact</div>
             <h3 className="receipt-title font-display">Environmental Receipt</h3>
             <div className="receipt-meta-row">
               <span>{model.name}</span>
@@ -644,12 +647,12 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
             <div className="receipt-toggle-row">
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
-                  Water Mode: {waterMode === 'consumption' ? 'Consumption' : 'Withdrawal'}
+                  Water Accounting: {waterMode === 'consumption' ? 'Permanent Evaporation' : 'Total Withdrawn'}
                 </span>
                 <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                   {waterMode === 'consumption'
-                    ? 'Permanent evaporation into atmosphere'
-                    : 'Total pumped freshwater (includes cycled back)'}
+                    ? 'Permanent evaporation into air (turned to steam and lost from watershed)'
+                    : 'Total freshwater pumped (includes water cycled through pipes and returned)'}
                 </span>
               </div>
               <div style={{ display: 'flex', gap: '4px' }}>
@@ -694,7 +697,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   Include Idle Server Overhead
                 </span>
                 <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
-                  Xiao et al. (2025): 23% idle power floor + 25% inference utilization (2.415× factor)
+                  Servers draw electricity even when waiting between user queries. Factoring in idle time (based on 25% server utilization from Xiao et al., 2025) reflects the real-world cost of keeping equipment running 24/7.
                 </span>
               </div>
               <label className="toggle-switch">
@@ -712,7 +715,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
           {/* Hero Metrics Grid */}
           <div className="metrics-hero-grid">
             <div className="metric-hero-block amber">
-              <span className="metric-hero-label">Server Energy</span>
+              <span className="metric-hero-label">Electricity Used</span>
               <span className="metric-hero-value glow-amber">
                 {calculation.energyWh < 0.1
                   ? calculation.energyWh.toFixed(3)
@@ -732,7 +735,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
             </div>
 
             <div className="metric-hero-block coral">
-              <span className="metric-hero-label">Operational CO₂</span>
+              <span className="metric-hero-label">Carbon Emissions</span>
               <span className="metric-hero-value glow-coral">
                 {calculation.carbonGrams.toFixed(2)}
               </span>
@@ -750,7 +753,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 fontWeight: 600,
               }}
             >
-              <span>Water Scope Breakdown</span>
+              <span>Where the Water is Used</span>
               <span style={{ color: 'var(--water-cyan-light)', fontFamily: 'var(--font-mono)' }}>
                 {calculation.displayedTotalWaterMl.toFixed(1)} mL Total
               </span>
@@ -780,8 +783,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   }}
                 />
                 <span>
-                  Scope 1 On-Site: {calculation.displayedScope1WaterMl.toFixed(1)} mL (
-                  {calculation.scope1Percent}%)
+                  Scope 1 On-Site: {calculation.displayedScope1WaterMl.toFixed(1)} mL ({calculation.scope1Percent}%) evaporated in cooling towers
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -794,8 +796,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   }}
                 />
                 <span>
-                  Scope 2 Grid: {calculation.displayedScope2WaterMl.toFixed(1)} mL (
-                  {calculation.scope2Percent}%)
+                  Scope 2 Grid: {calculation.displayedScope2WaterMl.toFixed(1)} mL ({calculation.scope2Percent}%) consumed by power plants
                 </span>
               </div>
             </div>
@@ -821,11 +822,11 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   fontFamily: 'var(--font-mono)',
                 }}
               >
-                {(calculation.bottleFraction * 100).toFixed(1)}% of a 500mL Water Bottle
+                {(calculation.bottleFraction * 100).toFixed(1)}% of a 500 mL Water Bottle
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                 Equivalent to evaporating ~<strong>{calculation.waterDrops}</strong> standard drops
-                of drinking-quality potable water.
+                of clean drinking water.
               </div>
             </div>
           </div>
@@ -844,7 +845,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 </div>
                 <div>
                   <div className="equiv-value">{calculation.ledSeconds}s</div>
-                  <div className="equiv-subtext">10W LED bulb glow</div>
+                  <div className="equiv-subtext">Powering a 10W LED bulb</div>
                 </div>
               </div>
 
@@ -856,7 +857,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   <div className="equiv-value">
                     {calculation.smartphoneBatteryPercent.toFixed(2)}%
                   </div>
-                  <div className="equiv-subtext">Smartphone charge</div>
+                  <div className="equiv-subtext">Smartphone recharge</div>
                 </div>
               </div>
 
@@ -866,7 +867,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                 </div>
                 <div>
                   <div className="equiv-value">{calculation.drivingMeters}m</div>
-                  <div className="equiv-subtext">Petrol car driving</div>
+                  <div className="equiv-subtext">Driving an average petrol car</div>
                 </div>
               </div>
 
@@ -878,7 +879,7 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
                   <div className="equiv-value">
                     {(calculation.totalFacilityEnergyKWh * 1000).toFixed(2)} Wh
                   </div>
-                  <div className="equiv-subtext">Facility energy (PUE)</div>
+                  <div className="equiv-subtext">Total facility energy (with cooling)</div>
                 </div>
               </div>
             </div>

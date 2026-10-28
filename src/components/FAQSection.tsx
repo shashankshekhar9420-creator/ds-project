@@ -16,42 +16,42 @@ export const FAQSection: React.FC = () => {
       id: 'faq-1',
       question: 'Why does generating text consume physical drinking water?',
       answer:
-        'When GPUs compute billions of matrix multiplications, electrical power is converted directly into heat. In hyperscale data centers, servers reject this heat into evaporative cooling towers where heated water is sprayed and evaporated into the atmosphere. Over 80% of on-site cooling water must be potable drinking water to prevent mineral crusts from destroying heat exchangers and to suppress bacterial colonization.',
+        'When AI chips answer questions, electricity turns directly into intense heat. To keep servers from overheating, datacenters circulate water across cooling plates, then pump that warm water up to rooftop cooling towers where it is sprayed into large fans and evaporated into the air. Over 80% of this cooling water must be clean drinking water, because river or unpurified water contains minerals that quickly clog pipes and destroy heat exchangers.',
       citation: 'Li et al. (2025) • CACM',
     },
     {
       id: 'faq-2',
-      question: 'Why is 71% of AI’s water footprint off-site rather than inside the data center?',
+      question: 'Why does 71% of AI’s water footprint happen off-site rather than in the datacenter?',
       answer:
-        'Xiao et al. (2025) proved that across U.S. data centers, 71% of total water consumption occurs at power plants generating the grid electricity (Scope 2), while only 29% occurs on-site (Scope 1). Coal, natural gas, and nuclear power plants boil water for steam turbine generators and evaporate enormous volumes of cooling water. Furthermore, hydroelectric reservoirs evaporate massive volumes from open water surfaces.',
+        'Xiao et al. (2025) discovered that most of AI’s water consumption occurs at the power plants supplying electricity to the datacenter (Scope 2), rather than inside the datacenter building itself (Scope 1). Coal, natural gas, and nuclear power plants boil water to spin steam turbines and evaporate vast volumes of cooling water to condense that steam back into liquid. In addition, hydroelectric dams create broad artificial lakes that lose millions of liters of water to sunlight and wind evaporation every day.',
       citation: 'Xiao et al. (2025) • Nature Sustainability / arXiv:2501.12345',
     },
     {
       id: 'faq-3',
-      question: 'What is the Hydropower Inversion Paradox in Washington State and Oregon?',
+      question: 'Why does clean hydroelectric power in the Pacific Northwest consume so much water?',
       answer:
-        'Washington and Oregon grids have very low carbon intensity due to Columbia River hydroelectricity. However, because open dam reservoirs have vast surface areas baking in the sun, their evaporative water loss per kilowatt-hour is astronomical (EWIF = 9.501 L/kWh). Running GPT-3 in Washington consumes 47.5 mL of water per query—more than 6 times higher than running in Texas (7.59 mL)!',
+        'The electric grids in Washington and Oregon produce very little carbon because they rely on hydroelectric dams along the Columbia River. However, those dams hold back water in vast, shallow reservoirs that sit under the open sun and wind. As a result, huge amounts of water evaporate per kilowatt-hour generated (about 9.5 liters per kWh). Running a query through a datacenter in Washington actually consumes about 47.5 mL of water—over 6 times more than the same query running in Texas (7.6 mL), where power plants use less water.',
       citation: 'Li et al. (2025) Table 1 & Xiao et al. (2025)',
     },
     {
       id: 'faq-4',
-      question: 'What is the physical difference between Water Consumption and Water Withdrawal?',
+      question: 'What is the difference between water consumed and water withdrawn?',
       answer:
-        'Water Withdrawal is the gross volume of freshwater pumped from lakes, rivers, or aquifers. Water Consumption is the net volume permanently evaporated into the atmosphere or incorporated into steam. For Scope 2 power generation, U.S. national average withdrawal is 43.83 L/kWh compared to 3.14 L/kWh consumed—almost 14 times higher!',
+        'Water Withdrawal is the total volume of water pumped from a river, lake, or groundwater source. Much of that water passes through cooling pipes and returns to the same source. Water Consumption is the portion that is permanently evaporated into steam and lost into the atmosphere, so it cannot be used locally again. When generating electricity, power plants withdraw about 14 times more water than they permanently consume (roughly 43.8 liters withdrawn versus 3.1 liters consumed per kilowatt-hour).',
       citation: 'Xiao et al. (2025) Section 2.1',
     },
     {
       id: 'faq-5',
       question: 'How does Google’s CICS save water and carbon without slowing users down?',
       answer:
-        'Google Carbon-Intelligent Computing System (CICS) distinguishes between urgent interactive queries (which must be served in milliseconds) and flexible batch workloads (e.g. model fine-tuning, embeddings, daily document indexing). CICS computes a Virtual Capacity Curve (VCC) that caps computing load during hot, dirty peak hours and shifts batch jobs to cool, green night or renewable hours.',
+        'Google’s Carbon-Intelligent Computing System (CICS) divides computing jobs into two groups: urgent requests (like live user questions that need an immediate reply) and flexible background jobs (like updating search indexes, fine-tuning models, or processing images). CICS runs urgent queries immediately, but automatically delays background jobs until hours when the electric grid is cleanest and outside temperatures are coolest, avoiding hot peak hours without users noticing any delay.',
       citation: 'Radovanović et al. (2023) • IEEE Trans. Power Systems',
     },
     {
       id: 'faq-6',
-      question: 'Does switching to smaller or distilled models eliminate the environmental footprint?',
+      question: 'Does switching to smaller or leaner models eliminate the environmental footprint?',
       answer:
-        'While distilled and Mixture-of-Experts (MoE) architectures cut energy per query from ~4 Wh down to ~1–2 Wh, they trigger Jevons’ Paradox (the Rebound Effect): as inference becomes cheaper and faster, companies and users trigger orders of magnitude more queries, integrating AI into search engines, autocomplete, and autonomous loops, driving net global water and energy demand higher.',
+        'Smaller models (like 8-billion parameter models or Mixture-of-Experts) do use significantly less electricity per query—often cutting power by 50% to 80%. However, when AI becomes faster and cheaper, people and companies tend to use it far more often—embedding it into search engines, autocomplete tools, and automated bots. Economists call this the Rebound Effect (or Jevons’ Paradox): making technology more efficient often leads to greater total consumption unless overall usage is managed.',
       citation: 'Xiao et al. (2025) Scenario 3 & Jevons (1865)',
     },
   ];
@@ -72,12 +72,12 @@ export const FAQSection: React.FC = () => {
             Quick answers to common questions.
           </h2>
           <p className="faq-lead-desc">
-            Physical fundamentals, grid interactions, and thermodynamic trade-offs explained directly from peer-reviewed empirical papers.
+            Clear, straightforward answers about how AI uses electricity and water, backed by peer-reviewed scientific studies.
           </p>
 
           <div className="faq-helper-card">
             <h4>Need the complete mathematical derivations?</h4>
-            <p>Read our exhaustive publication monograph with rendered LaTeX proofs and the full 18-datacenter telemetry matrix.</p>
+            <p>Read our comprehensive scientific report with full equations, proofs, and the complete 18-datacenter telemetry matrix.</p>
             <a
               href="./report.html"
               target="_blank"

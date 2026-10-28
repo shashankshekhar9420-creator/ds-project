@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
             </div>
             <div className="brand-text-block">
               <div className="brand-title">AETHERIA</div>
-              <div className="brand-badge-pill">AI HYDROLOGY & CARBON LAB</div>
+              <div className="brand-badge-pill">AI Water & Energy Simulator</div>
             </div>
           </a>
 
@@ -44,16 +44,16 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
               <span>1. Query & Impact</span>
             </a>
             <a href="#feature-physics" className="nav-tab-btn">
-              <span>2. Physics</span>
+              <span>2. Where Water Goes</span>
             </a>
             <a href="#feature-datacenters" className="nav-tab-btn">
-              <span>3. Datacenters</span>
+              <span>3. Global Datacenters</span>
             </a>
             <a href="#feature-formulas" className="nav-tab-btn">
-              <span>4. Formulations</span>
+              <span>4. The Math</span>
             </a>
             <a href="#feature-citations" className="nav-tab-btn">
-              <span>5. Citations</span>
+              <span>5. Sources & FAQ</span>
             </a>
           </nav>
 
@@ -63,12 +63,12 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
               className="live-grid-capsule"
               title={
                 weatherRecommendation
-                  ? `APIs Live: Open-Meteo Weather + Grid Telemetry. Optimal Hub: ${weatherRecommendation.bestOverall.location.name} (${weatherRecommendation.bestOverall.weather.temperatureC}°C).`
-                  : 'Live Telemetry: Open-Meteo Weather & Grid APIs Connected'
+                  ? `Live Telemetry: Open-Meteo Weather + Grid Intensity. Best Location Right Now: ${weatherRecommendation.bestOverall.location.name} (${weatherRecommendation.bestOverall.weather.temperatureC}°C).`
+                  : 'Live Telemetry: Open-Meteo Weather and Grid APIs Connected'
               }
             >
               <span className="live-dot-green" />
-              <span>APIs SYNCED</span>
+              <span>Live Weather Synced</span>
             </div>
 
             {onOpenReport ? (
@@ -76,10 +76,10 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
                 className="btn-pill-ghost btn-sm"
                 onClick={onOpenReport}
                 id="nav-report-btn"
-                title="View full research monograph report"
+                title="View full research report"
               >
                 <FileText size={12} />
-                <span>Monograph</span>
+                <span>Full Report</span>
               </button>
             ) : (
               <a
@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
                 title="Open full interactive scientific report in a new tab"
               >
                 <FileText size={12} />
-                <span>Report Monograph</span>
+                <span>Full Report</span>
                 <ArrowUpRight size={11} />
               </a>
             )}

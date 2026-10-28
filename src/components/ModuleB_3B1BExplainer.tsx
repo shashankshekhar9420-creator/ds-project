@@ -367,10 +367,10 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       {/* Section Header */}
       <div style={{ marginBottom: '0.5rem' }}>
         <h2 className="font-display" style={{ fontSize: '1.35rem', color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '0.25rem' }}>
-          Physical Thermodynamics of AI Inference
+          How AI Uses Electricity and Water
         </h2>
         <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', maxWidth: '820px', lineHeight: 1.5 }}>
-          Understand how electrical energy converts into heat across GPU silicon dies, why cooling towers evaporate municipal drinking water, and how power grids draw cooling water at off-site generation plants.
+          Every time an AI answers a question, electricity turns into heat inside high-powered computing chips. To keep those chips from overheating, datacenters evaporate clean water in cooling towers. At the same time, the power plants generating that electricity consume even more water off-site. Here is how both systems work together.
         </p>
       </div>
 
@@ -395,7 +395,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           }}
         >
           <Layers size={13} />
-          <span>Thermodynamics Simulation</span>
+          <span>Interactive Cooling Cycle</span>
         </button>
 
         <button
@@ -417,7 +417,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           }}
         >
           <Cpu size={13} />
-          <span>Token Calculation & Reliability</span>
+          <span>How Queries Become Energy</span>
         </button>
 
         <button
@@ -439,7 +439,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           }}
         >
           <Scale size={13} />
-          <span>Mathematical Formulations</span>
+          <span>Formulas & Calculations</span>
         </button>
 
         <button
@@ -461,7 +461,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           }}
         >
           <FileText size={13} />
-          <span>Foundational Papers</span>
+          <span>Scientific Research</span>
         </button>
       </div>
 
@@ -482,10 +482,10 @@ export const ModuleB3B1BExplainer: React.FC = () => {
                     textTransform: 'uppercase',
                   }}
                 >
-                  Interactive Thermodynamic Canvas
+                  Interactive Cooling Cycle
                 </span>
                 <h3 className="font-display" style={{ fontSize: '1.25rem', color: '#fff', marginTop: '2px' }}>
-                  Why Does AI Drink Water? Scope 1 vs. Scope 2
+                  Where Does the Water Go? On-Site vs. Off-Site
                 </h3>
               </div>
 
@@ -495,19 +495,19 @@ export const ModuleB3B1BExplainer: React.FC = () => {
                     className={`scope-pill-btn ${activeScope === 'all' ? 'active' : ''}`}
                     onClick={() => setActiveScope('all')}
                   >
-                    All Scopes (100%)
+                    Both Sources Combined
                   </button>
                   <button
                     className={`scope-pill-btn ${activeScope === 'scope1' ? 'active' : ''}`}
                     onClick={() => setActiveScope('scope1')}
                   >
-                    Scope 1: On-Site (29%)
+                    Scope 1: On-Site Cooling (29%)
                   </button>
                   <button
                     className={`scope-pill-btn ${activeScope === 'scope2' ? 'active' : ''}`}
                     onClick={() => setActiveScope('scope2')}
                   >
-                    Scope 2: Off-Site Grid (71%)
+                    Scope 2: Off-Site Power Plants (71%)
                   </button>
                 </div>
 
@@ -549,7 +549,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
                     Ambient Outside Temperature: <span style={{ color: '#38bdf8' }}>{simTemp}°C ({Math.round(simTemp * 1.8 + 32)}°F)</span>
                   </div>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-                    Higher ambient temperatures raise wet-bulb limits, forcing towers to evaporate more potable water.
+                    When it is hot outside, datacenters cannot rely on outdoor air alone. They must evaporate significantly more clean water to cool the building.
                   </div>
                 </div>
               </div>
@@ -574,10 +574,10 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <div className="ribbon-stat-big" style={{ color: 'var(--water-cyan-light)' }}>71%</div>
               <div className="ribbon-content">
                 <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#fff', fontWeight: 700 }}>
-                  The Counterintuitive Scope 2 Reality (Xiao et al., Nature Sustainability 2025)
+                  The Surprising Reality of AI Water Use (Xiao et al., Nature Sustainability 2025)
                 </h4>
                 <p style={{ margin: '4px 0 0 0', fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                  While public attention focuses on datacenter cooling towers (Scope 1 = 29%), over <strong>71%</strong> of AI's operational water consumption occurs miles away at thermoelectric power plant steam condensers and hydroelectric reservoir surfaces.
+                  Most people picture the cooling towers sitting right on datacenter rooftops (Scope 1 = 29%). But over <strong>71%</strong> of AI's water footprint actually vanishes miles away at the power plants generating its electricity. Steam plants evaporate cooling water, and large hydroelectric dams lose millions of liters every sunny day to natural surface evaporation.
                 </p>
               </div>
             </div>
@@ -593,10 +593,10 @@ export const ModuleB3B1BExplainer: React.FC = () => {
                 setActiveScope('all');
               }}
             >
-              <div className="story-card-number">STAGE 01 // SILICON JOULE HEATING</div>
-              <div className="story-card-title">1. Silicon Dissipation</div>
+              <div className="story-card-number">STAGE 01 // COMPUTING CHIPS</div>
+              <div className="story-card-title">1. Heat on the Chips</div>
               <p className="story-card-desc">
-                High-density GPU accelerators like the Nvidia H100 draw up to 700W each. When billions of transistors switch at gigahertz frequencies, electrical resistance transforms power directly into thermal entropy that must be removed immediately to prevent thermal throttling.
+                High-performance AI chips (like the Nvidia H100) consume up to 700 watts each—roughly the same heat as a kitchen toaster packed into a chip the size of a postage stamp. Millions of calculations happening billions of times per second turn electricity directly into heat that must be moved away immediately.
               </p>
             </div>
 
@@ -607,10 +607,10 @@ export const ModuleB3B1BExplainer: React.FC = () => {
                 setActiveScope('scope1');
               }}
             >
-              <div className="story-card-number">STAGE 02 // SCOPE 1 ON-SITE</div>
-              <div className="story-card-title">2. Evaporative Cooling Towers</div>
+              <div className="story-card-number">STAGE 02 // ON-SITE COOLING</div>
+              <div className="story-card-title">2. Datacenter Cooling Towers</div>
               <p className="story-card-desc">
-                Liquid cooling loops carry heat away from server cold plates to facility cooling towers. To shed this heat into hot ambient air, potable municipal water is sprayed into draft fans. The latent heat of vaporization absorbs ~2,260 kJ per liter evaporated.
+                Liquid coolant flows across metal plates resting on the chips, carrying their heat to rooftop cooling towers. There, clean tap water is sprayed into huge fans. As that water evaporates into steam, it carries the heat away into the air (absorbing about 2,260 kilojoules of heat for every liter evaporated).
               </p>
             </div>
 
@@ -621,10 +621,10 @@ export const ModuleB3B1BExplainer: React.FC = () => {
                 setActiveScope('scope2');
               }}
             >
-              <div className="story-card-number">STAGE 03 // SCOPE 2 GRID</div>
-              <div className="story-card-title">3. Power Plant Fuel Cycle</div>
+              <div className="story-card-number">STAGE 03 // OFF-SITE POWER PLANTS</div>
+              <div className="story-card-title">3. Power Plants & Reservoirs</div>
               <p className="story-card-desc">
-                Every kilowatt-hour delivered over high-voltage transmission lines carries an embedded water cost. Coal, natural gas, and nuclear power plants consume enormous water volumes to condense steam, while hydroelectric dams suffer massive sun-driven surface evaporation.
+                The electricity feeding the datacenter carries its own hidden water cost. Coal, natural gas, and nuclear power plants must condense high-pressure steam back into water to keep turbines spinning. Meanwhile, hydroelectric dams create huge artificial lakes that lose millions of liters of water to sunlight and wind every day.
               </p>
             </div>
           </div>
@@ -641,12 +641,12 @@ export const ModuleB3B1BExplainer: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
               <Zap size={18} style={{ color: 'var(--energy-amber)' }} />
               <h3 className="font-display" style={{ fontSize: '1.2rem', color: '#fff' }}>
-                How AI Tokens Are Converted to Joules, Water, and Carbon
+                How a Question Turns into Electricity, Water, and Carbon
               </h3>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              In generative artificial intelligence, energy consumption does not scale simply as a flat rate per character.
-              Modern transformer architectures exhibit a profound <strong>dual-phase thermodynamic asymmetry</strong> between reading input tokens and generating output tokens, accompanied by substantial idle server overhead.
+              AI models do not consume electricity like a simple lightbulb where every letter typed costs the same amount.
+              Instead, there is a fundamental difference between <strong>reading your question</strong> and <strong>writing out the answer</strong>, plus the fact that servers draw continuous electricity even while waiting between requests.
             </p>
           </div>
 
@@ -657,22 +657,22 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                 <Cpu size={16} style={{ color: 'var(--energy-amber-light)' }} />
                 <h4 style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 700 }}>
-                  1. Dual-Phase Asymmetry: Prefill vs. Autoregressive Decoding
+                  1. Why Writing Answers Takes More Energy Than Reading Questions
                 </h4>
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                Stojkovic et al. (ASPLOS 2025) and Li et al. (CACM 2025) proved that LLM energy is divided into two distinct hardware phases:
+                Stojkovic et al. (ASPLOS 2025) and Li et al. (CACM 2025) discovered that running an AI model involves two completely different types of computing work:
               </p>
               <ul style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '8px', paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <li>
-                  <strong style={{ color: 'var(--energy-amber)' }}>Prompt Prefill Phase (W_in, 30% baseline):</strong> Highly compute-bound. All input prompt tokens are processed concurrently via parallel matrix multiplications on GPU Tensor Cores with high arithmetic intensity (&gt;100 FLOPs/byte).
+                  <strong style={{ color: 'var(--energy-amber)' }}>Reading Phase (Input Prompt, ~30% base energy):</strong> The computer ingests your entire question all at once in parallel. Thousands of processor cores work simultaneously, making this stage fast and highly efficient.
                 </li>
                 <li>
-                  <strong style={{ color: 'var(--water-cyan)' }}>Autoregressive Decoding Phase (W_out, 70% baseline):</strong> Strictly memory-bandwidth bound. To output a single token, the GPU must stream all hundreds of gigabytes of model weights from High-Bandwidth Memory (HBM3) to chip registers. This results in an arithmetic intensity of ~1 FLOP/byte, drawing near-peak TDP while doing fractionally less compute.
+                  <strong style={{ color: 'var(--water-cyan)' }}>Writing Phase (Generating Answers, ~70% base energy):</strong> The computer must create its response one word piece (token) at a time. For every single piece it writes, the processor has to stop, reload hundreds of billions of numbers from high-speed memory chips, and then calculate the next piece. This memory bottleneck burns near-maximum electricity for every word.
                 </li>
               </ul>
               <div style={{ marginTop: '10px', padding: '8px 10px', background: 'rgba(245, 158, 11, 0.08)', borderRadius: '6px', border: '1px solid rgba(245, 158, 11, 0.2)', fontSize: '0.72rem', color: 'var(--energy-amber-light)' }}>
-                <strong>Key Takeaway:</strong> Generating one output token requires approximately <strong>7× more electrical energy</strong> than ingesting one input token.
+                <strong>Key Takeaway:</strong> Writing one word of an answer uses roughly <strong>2 to 3 times more electricity</strong> than reading one word of a prompt.
               </div>
             </div>
 
@@ -681,23 +681,21 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                 <Database size={16} style={{ color: 'var(--water-cyan-light)' }} />
                 <h4 style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 700 }}>
-                  2. Idle Server Floor & Power Allocation
+                  2. The Cost of Servers Waiting Between Questions (Idle Overhead)
                 </h4>
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                Datacenter servers cannot be spun down to zero watts between prompt arrivals without inducing unacceptably high latency:
+                AI servers cannot simply be turned on and off for every question, because loading an AI model into high-speed memory takes several minutes:
               </p>
               <ul style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '8px', paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <li>
-                  <strong>Static Power Floor:</strong> Xiao et al. (Nature Sustainability 2025) measured that enterprise GPU servers consume approximately <strong>23% of peak power (P_idle = 0.23)</strong> simply idling in high-availability memory standby.
+                  <strong>Baseline Power Draw:</strong> Xiao et al. (Nature Sustainability 2025) measured that enterprise AI servers draw about <strong>23% of peak power</strong> simply sitting idle in memory standby, waiting for the next user request.
                 </li>
                 <li>
-                  <strong>Effective Utilization Multiplier:</strong> At an industry-average real-world server utilization rate of 25% (u = 0.25), the total facility power allocated per query is:
-                  <br />
-                  <code style={{ color: '#cbd5e1' }}>P_server = (P_max - P_idle)·u + P_idle = 0.3925·P_max</code>.
+                  <strong>Real-World Server Use:</strong> Across commercial datacenters, servers are actively computing only about 25% of the day. The rest of the time is spent waiting on standby.
                 </li>
                 <li>
-                  Comparing this to pure active compute (0.1625·P_max) yields an empirical <strong>2.415× idle multiplier</strong> when accounting for idle hardware capacity.
+                  <strong>Allocating Real Electricity:</strong> When you account for the idle time required to keep servers ready on demand, the total real-world electricity needed per question is roughly <strong>2.4× higher</strong> than measuring active computing alone.
                 </li>
               </ul>
             </div>
@@ -707,18 +705,18 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                 <Scale size={16} style={{ color: 'var(--eco-emerald-light)' }} />
                 <h4 style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 700 }}>
-                  3. Tokenizer Heuristics & BPE Mapping
+                  3. Words vs. Tokens: How Computers Read Text
                 </h4>
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                Modern LLMs (GPT-4, Llama 3, Claude) process text via Byte-Pair Encoding (BPE) subword tokenizers:
+                AI models do not read whole words or individual letters. They slice language into small pieces called tokens:
               </p>
               <ul style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '8px', paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <li>
-                  <strong>Standard Ratio:</strong> In English natural language, 1 word averages <strong>1.33 tokens</strong> (or approximately 0.75 words per token).
+                  <strong>The 3/4 Rule:</strong> In standard English text, 1 word is roughly <strong>1.33 tokens</strong> (or about 0.75 words per token). Common words like "the" are one token; longer words like "understanding" may be split into two or three pieces.
                 </li>
                 <li>
-                  <strong>Benchmark Standardization:</strong> Following Li et al. (2025) and Stojkovic et al. (2025), Aetheria normalizes user prompt length against an empirical baseline query of 800 input words (~1,064 tokens) and 225 output words (~300 tokens).
+                  <strong>Standard Reference Benchmark:</strong> In peer-reviewed research (Li et al. 2025 and Stojkovic et al. 2025), a standard query is defined as reading 800 words (~1,064 tokens) and writing a 225-word answer (~300 tokens). Our calculator scales energy up or down proportionally from this baseline.
                 </li>
               </ul>
             </div>
@@ -728,24 +726,24 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                 <AlertTriangle size={16} style={{ color: 'var(--carbon-coral-light)' }} />
                 <h4 style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 700 }}>
-                  4. Scientific Reliability & Margin of Error
+                  4. Accuracy, Margins of Error, and Limitations
                 </h4>
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                How reliable is this calculation mechanism in the real world?
+                How closely do these estimates match what happens in a real datacenter?
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px', fontSize: '0.78rem' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
                   <CheckCircle2 size={13} style={{ color: 'var(--eco-emerald-light)', flexShrink: 0, marginTop: '2px' }} />
-                  <span><strong>High Accuracy for Macro Footprints:</strong> For typical conversational queries (50 to 1,500 words) on standard datacenter GPU nodes (A100/H100), empirical models demonstrate <strong>±10% to ±15% accuracy</strong> calibrated against direct RAPL and NVML hardware power meter traces.</span>
+                  <span><strong>High Accuracy for Everyday Prompts:</strong> For typical conversational questions (50 to 1,500 words) on standard datacenter GPU nodes (like Nvidia A100/H100), these formulas demonstrate <strong>±10% to ±15% accuracy</strong> when compared directly to physical hardware power meters.</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
                   <Info size={13} style={{ color: 'var(--energy-amber-light)', flexShrink: 0, marginTop: '2px' }} />
-                  <span><strong>Multilingual Token Skew:</strong> Non-English languages (e.g. Hindi, Arabic, CJK) fragment into 2×–3.5× more subword tokens per word, proportionately increasing energy per word.</span>
+                  <span><strong>Language Differences:</strong> Languages other than English (such as Hindi, Arabic, Japanese, or Chinese) often fragment into 2× to 3.5× more tokens per word, which increases the electricity required per word written.</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
                   <Info size={13} style={{ color: 'var(--water-cyan-light)', flexShrink: 0, marginTop: '2px' }} />
-                  <span><strong>Architecture & Batching:</strong> Mixture-of-Experts (MoE) models (e.g. Mixtral) and continuous request batching reduce active FLOPs and amortize memory reads across multiple concurrent users, shifting per-query decoding energy lower under heavy server loads.</span>
+                  <span><strong>Server Traffic & Batching:</strong> When millions of people use an AI service simultaneously, datacenters group queries together into batches. This amortizes memory reads across multiple requests, making each question slightly more efficient during busy periods.</span>
                 </div>
               </div>
             </div>
@@ -754,16 +752,16 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       )}
 
       {/* =========================================================================
-          SUB-TAB 3: MATHEMATICAL FORMULATIONS (Merged from Methodology)
+          SUB-TAB 3: MATHEMATICAL FORMULATIONS
           ========================================================================= */}
       {activeSubTab === 'formulations' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div className="glass-panel" style={{ padding: '1.25rem' }}>
             <h3 className="font-display" style={{ fontSize: '1.25rem', color: '#fff' }}>
-              Verified Peer-Reviewed Mathematical Formulations
+              The Math Behind the Calculations
             </h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-              Every calculation in Aetheria executes directly from the mathematical models defined in Li et al. (2025), Xiao et al. (2025), Stojkovic et al. (2025), and Radovanović et al. (Google CICS).
+              Every calculation on this website uses the exact peer-reviewed mathematical formulations published by Li et al. (2025), Xiao et al. (2025), Stojkovic et al. (2025), and Google Research. Here is what each equation calculates in plain language:
             </p>
           </div>
 
@@ -771,52 +769,52 @@ export const ModuleB3B1BExplainer: React.FC = () => {
             {/* Formula 1 */}
             <div style={{ background: 'rgba(15, 23, 42, 0.7)', padding: '1.25rem', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
               <div style={{ fontSize: '0.8rem', color: 'var(--energy-amber-light)', fontWeight: 600, marginBottom: '6px' }}>
-                1. Dual-Phase Token-to-Energy Scaling (Stojkovic et al. / Li et al., 2025)
+                1. Calculating Server Electricity from Words and Answers (Stojkovic et al. / Li et al., 2025)
               </div>
               <MathFormula
                 formula={`e_t = E_{\\text{base}} \\cdot \\left( 0.30 \\cdot \\frac{W_{\\text{in}}}{800} + 0.70 \\cdot \\frac{W_{\\text{out}}}{225} \\right)`}
               />
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Where <code style={{ color: 'var(--energy-amber)' }}>W_in</code> is the count of user prompt input words (normalized to 800 words), <code style={{ color: 'var(--water-cyan)' }}>W_out</code> is the generated token count (normalized to 225 words), and <code style={{ color: '#cbd5e1' }}>E_base</code> is the empirical server energy baseline in kWh for the selected model.
+                <strong>In plain language:</strong> Total server electricity (e_t) equals the model's base energy (E_base) multiplied by a weighted sum. Input words (W_in) get a 30% weight relative to an 800-word benchmark, while output words (W_out) get a 70% weight relative to a 225-word benchmark. This mathematically captures why generating answers uses over twice as much electricity per word as reading prompt text.
               </p>
             </div>
 
             {/* Formula 2 */}
             <div style={{ background: 'rgba(15, 23, 42, 0.7)', padding: '1.25rem', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
               <div style={{ fontSize: '0.8rem', color: 'var(--water-cyan-light)', fontWeight: 600, marginBottom: '6px' }}>
-                2. Operational Water Footprint (Li et al., 2025 Section 3.1)
+                2. Calculating Total Water Use: Cooling Towers + Power Plants (Li et al., 2025 Section 3.1)
               </div>
               <MathFormula
                 formula={`\\text{Water}_{\\text{Operational}}(t) = \\underbrace{e_t \\cdot \\rho_{s1,t}}_{\\text{Scope 1 (On-Site Cooling)}} + \\underbrace{e_t \\cdot \\theta_t \\cdot \\rho_{s2,t}}_{\\text{Scope 2 (Off-Site Grid Generation)}}`}
               />
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Where <code style={{ color: 'var(--water-cyan)' }}>ρ_s1,t</code> is the on-site WUE (L/kWh) dynamically modulated by local ambient dry-bulb temperature and humidity, <code style={{ color: '#cbd5e1' }}>θ_t</code> is the facility PUE, and <code style={{ color: '#38bdf8' }}>ρ_s2,t</code> is the regional grid EWIF (L/kWh).
+                <strong>In plain language:</strong> Total water use combines two distinct sources. <em>Scope 1</em> is the electricity used by the servers (e_t) multiplied by how much water the on-site cooling towers evaporate per kilowatt-hour (ρ_s1,t, which rises when outside weather is hot). <em>Scope 2</em> is the total facility energy (server energy multiplied by the facility overhead factor θ_t) multiplied by how much water the regional power grid consumes per kilowatt-hour (ρ_s2,t).
               </p>
             </div>
 
             {/* Formula 3 */}
             <div style={{ background: 'rgba(15, 23, 42, 0.7)', padding: '1.25rem', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
               <div style={{ fontSize: '0.8rem', color: 'var(--carbon-coral-light)', fontWeight: 600, marginBottom: '6px' }}>
-                3. Operational Carbon Footprint (Xiao et al. 2025 / Radovanović et al. 2023)
+                3. Calculating Carbon Emissions from the Electric Grid (Xiao et al. 2025 / Radovanović et al. 2023)
               </div>
               <MathFormula
                 formula={`\\text{Carbon}_{\\text{Operational}}(t) = e_t \\cdot \\theta_t \\cdot \\eta^{(c)}(t)`}
               />
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Where <code style={{ color: 'var(--carbon-coral)' }}>η^(c)(t)</code> is the hourly marginal regional grid carbon intensity in kgCO₂e/kWh, tracking real-time generation fuel mixes (coal, gas, solar, wind, nuclear, hydro).
+                <strong>In plain language:</strong> Operational carbon emissions equal the total electricity delivered to the building (server electricity e_t multiplied by the facility overhead multiplier θ_t) multiplied by the regional electric grid's carbon intensity (η^(c)(t)). A grid powered by coal or gas produces high emissions, while a grid running on solar, wind, or nuclear produces very low emissions.
               </p>
             </div>
 
             {/* Formula 4 */}
             <div style={{ background: 'rgba(15, 23, 42, 0.7)', padding: '1.25rem', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
               <div style={{ fontSize: '0.8rem', color: 'var(--eco-emerald-light)', fontWeight: 600, marginBottom: '6px' }}>
-                4. Google CICS Multi-Objective Load Shifting (Radovanović et al. 2023)
+                4. Balancing Carbon and Water When Moving Computing Work (Google CICS, Radovanović et al. 2023)
               </div>
               <MathFormula
                 formula={`\\min_{h \\in \\{0..23\\}} \\left[ w_{\\text{carbon}} \\cdot \\frac{\\text{Carbon}(h)}{\\text{Carbon}_{\\text{avg}}} + w_{\\text{water}} \\cdot \\frac{\\text{Water}(h)}{\\text{Water}_{\\text{avg}}} \\right]`}
               />
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Resolves the fundamental diurnal conflict: noon solar provides near-zero carbon but high ambient heat drives evaporative water loss, while midnight air is cold but the grid relies on fossil baseload power.
+                <strong>In plain language:</strong> When scheduling flexible computing tasks across the 24 hours of a day (h), this equation finds the optimal hour by weighing carbon against water. At midday, abundant solar energy keeps carbon near zero, but hot afternoon air forces cooling towers to evaporate more water. At midnight, cool air saves water, but the grid may rely on fossil fuel plants. This formula lets operators choose the best balance between the two priorities.
               </p>
             </div>
           </div>
@@ -824,7 +822,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       )}
 
       {/* =========================================================================
-          SUB-TAB 4: FOUNDATIONAL PAPERS (Merged from Methodology)
+          SUB-TAB 4: FOUNDATIONAL PAPERS
           ========================================================================= */}
       {activeSubTab === 'papers' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -833,7 +831,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               Peer-Reviewed Scientific Literature
             </h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-              The empirical coefficients, cooling tower evaporation curves, and power allocations implemented in Aetheria originate from four landmark publications:
+              The empirical measurements, cooling tower evaporation curves, and power allocations implemented across this project originate from four landmark publications:
             </p>
           </div>
 
@@ -846,7 +844,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                 <em>"Making AI Less Thirsty: Uncovering and Addressing the Secret Water Footprint of AI Models"</em>
                 <br />
-                Communications of the ACM. Introduced empirical on-site cooling water measurements across 18 Microsoft datacenter regions, identifying Scope-1 cooling tower evaporation and the Hydropower Paradox.
+                Communications of the ACM. First major study to measure on-site cooling water across 18 datacenter regions. Documented that datacenters evaporate fresh drinking water in cooling towers and identified the Hydropower Paradox (clean hydro energy can still evaporate massive amounts of water from open reservoirs).
               </p>
             </div>
 
@@ -858,7 +856,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                 <em>"Environmental Footprints of AI: Energy, Water, and Carbon"</em>
                 <br />
-                Nature Sustainability. Quantified the counterintuitive 71% Scope 2 / 29% Scope 1 water division, idle server power penalties, and validated engineering mitigation curves.
+                Nature Sustainability. Quantified the counterintuitive reality that 71% of AI's water footprint occurs off-site at power plants rather than on-site. Also measured the 23% idle power floor for enterprise servers and validated key engineering mitigation curves.
               </p>
             </div>
 
@@ -870,7 +868,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                 <em>"Characterizing LLM Inference Energy Overhead Under Real-World Latency SLOs"</em>
                 <br />
-                ACM ASPLOS. Established empirical energy scaling separating parallelized prompt prefill (30% weight) from memory-bandwidth-bound autoregressive decoding (70% weight).
+                ACM ASPLOS. Established the empirical energy scaling that separates parallelized prompt reading (30% baseline weight) from memory-bandwidth-bound answer generation (70% baseline weight).
               </p>
             </div>
 
@@ -882,7 +880,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                 <em>"Carbon-Intelligent Computing System (CICS) at Google Scale"</em>
                 <br />
-                IEEE Micro / Google Research. Detailed Google's Virtual Capacity Curve (VCC) and 24-hour load-shifting optimization against diurnal solar and grid availability.
+                IEEE Micro / Google Research. Detailed Google's Virtual Capacity Curve (VCC) and 24-hour load-shifting framework to synchronize computing work with regional solar and wind availability.
               </p>
             </div>
           </div>

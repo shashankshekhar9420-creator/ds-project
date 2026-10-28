@@ -85,29 +85,29 @@ export function recommendOptimizedModel(params: {
     text.startsWith('extract ');
 
   if (isCodeOrAlgorithm || isComplexMathOrProof) {
-    taskType = isCodeOrAlgorithm ? 'Coding / Algorithm' : 'Advanced Mathematical Logic';
+    taskType = isCodeOrAlgorithm ? 'Coding & Algorithms' : 'Step-by-Step Logic & Math';
     // If user is running Falcon-180B (16 Wh), suggest Llama-3-70B (10 Wh) or MoE (2 Wh)
     if (currentModel.id === 'falcon-180b') {
       suggestedModel = llama70bModel;
-      reason = 'Complex reasoning is handled with high accuracy by 70B parameter models without drawing 180B cluster power.';
+      reason = 'A 70-billion parameter model handles complex code and logic with high accuracy without drawing the extra power of a massive 180-billion parameter cluster.';
     } else {
       suggestedModel = currentModel;
-      reason = 'Model scale matches complex multi-step reasoning requirements.';
+      reason = 'Your chosen model size is well-suited for solving multi-step logic and coding tasks.';
     }
   } else if (isSimpleLookupOrSummary) {
-    taskType = 'Lightweight Lookup / Transformation';
+    taskType = 'Short Question or Summary';
     // For simple tasks, High-Efficiency MoE / Distilled (2 Wh) is optimal
     suggestedModel = moeModel;
-    reason = 'This informational/formatting query does not require dense 70B–180B parameter activation. A sparse MoE model satisfies the task at a fraction of the energy.';
+    reason = 'This short question or text request does not need a giant model. A leaner model answers it just as accurately while using only a fraction of the electricity and water.';
   } else {
-    taskType = 'General Conversational / Text Generation';
+    taskType = 'General Writing & Conversation';
     // For standard text generation, MoE or GPT-3 is optimal
     if (currentModel.id === 'falcon-180b' || currentModel.id === 'llama-3-70b') {
       suggestedModel = moeModel;
-      reason = 'Standard text generation achieves equivalent output quality using sparse MoE architecture while avoiding heavy memory-bandwidth bottlenecks.';
+      reason = 'Everyday writing and conversation achieves high quality with a leaner model, avoiding the unnecessary electricity spent activating billions of extra parameters.';
     } else {
       suggestedModel = currentModel;
-      reason = 'Selected model provides an optimal balance of compute and generation quality.';
+      reason = 'Your chosen model provides a practical balance between response quality and electricity consumption.';
     }
   }
 

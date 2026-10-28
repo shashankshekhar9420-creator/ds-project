@@ -18,17 +18,17 @@ export const ReportCTASection: React.FC<ReportCTASectionProps> = ({ onOpenReport
             The Scientific Concepts & Features Architecture Report
           </h2>
           <p className="report-cta-desc">
-            We compiled an exhaustive, publication-grade research monograph detailing all 7 major web platform features, physical transformer inference mechanics, thermodynamic cooling equations, the 71% off-site water paradox, and an empirical audit of 18 hyperscale hubs.
+            We compiled a comprehensive, easy-to-navigate scientific report explaining all key platform features, how computing models consume electricity and water, the full mathematical proofs, and a detailed audit of 18 global datacenter locations.
           </p>
 
           <div className="report-highlights-row">
             <div className="highlight-pill">
               <CheckCircle2 size={13} className="text-emerald" />
-              <span>Full LaTeX Derivations</span>
+              <span>Full Mathematical Proofs</span>
             </div>
             <div className="highlight-pill">
               <CheckCircle2 size={13} className="text-cyan" />
-              <span>18 Hyperscale Data Center Matrix</span>
+              <span>18 Global Datacenter Audits</span>
             </div>
             <div className="highlight-pill">
               <CheckCircle2 size={13} className="text-amber" />
@@ -44,7 +44,7 @@ export const ReportCTASection: React.FC<ReportCTASectionProps> = ({ onOpenReport
               className="btn-pill-white"
               id="cta-open-report-tab"
             >
-              <span>Open Report as Standalone Website</span>
+              <span>Open Full Report in New Tab</span>
               <div className="circle-arrow-mini">
                 <ArrowUpRight size={12} />
               </div>
@@ -56,7 +56,7 @@ export const ReportCTASection: React.FC<ReportCTASectionProps> = ({ onOpenReport
               id="cta-open-report-inapp"
             >
               <BookOpen size={15} />
-              <span>Read Report Inside App</span>
+              <span>Read Full Report Here</span>
             </button>
           </div>
         </div>

@@ -206,7 +206,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700 }}>
-                    Electrical Grid & Demand
+                    Regional Electric Grid Telemetry
                   </h4>
                   <span className={`badge ${electricity?.isLive ? 'badge-emerald' : 'badge-amber'}`} style={{ fontSize: '0.625rem', padding: '1px 6px' }}>
                     {electricity?.isLive ? 'Live Grid' : 'Regional Dispatch'}
@@ -223,7 +223,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
                 <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--energy-amber-light)', fontFamily: 'var(--font-mono)' }}>
                   {(electricity.demandMW).toLocaleString()} MW
                 </span>
-                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Grid Consumption</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Grid Power Demand</div>
               </div>
             )}
           </div>
@@ -247,7 +247,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               <span className="weather-stat-val glow-amber" style={{ fontSize: '1.2rem' }}>
                 {electricity ? `${electricity.fossilSharePct}%` : '--'}
               </span>
-              <span className="weather-stat-sub">Fossil Baseload</span>
+              <span className="weather-stat-sub">Fossil Fuel Power</span>
             </div>
           </div>
 
@@ -279,15 +279,15 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
           <AlertCircle size={24} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
           <div>
             <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#fff', marginBottom: '2px' }}>
-              The Hydropower Paradox Active in {location.name} (Xiao et al., 2025)
+              The Clean-Energy Paradox in {location.name} (Xiao et al., 2025)
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
-              While {location.name} boasts near-zero carbon intensity (
-              <strong>{location.carbonIntensity} kgCO₂e/kWh</strong>) thanks to hydro generation,
-              its Scope 2 water footprint skyrockets to{' '}
-              <strong style={{ color: '#38bdf8' }}>{location.offSiteEWIF} L/kWh</strong>. Huge
-              open-water reservoir surfaces suffer immense sun-driven evaporation, demonstrating that{' '}
-              <em>zero-carbon is not zero-water</em>.
+              While {location.name} produces almost zero carbon emissions (
+              <strong>{location.carbonIntensity} kgCO₂e/kWh</strong>) by relying on hydroelectric dams,
+              its off-site water footprint reaches an extraordinary{' '}
+              <strong style={{ color: '#38bdf8' }}>{location.offSiteEWIF} L/kWh</strong>. Enormous
+              open-water reservoir surfaces lose millions of liters of water to sunlight and wind evaporation, proving that{' '}
+              <em>clean electricity is not always water-free electricity</em>.
             </p>
           </div>
         </div>
@@ -316,21 +316,19 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               Li et al. (2025) Trade-off Dynamics
             </div>
             <h3 className="font-display" style={{ fontSize: '1.25rem', color: '#fff' }}>
-              The "Follow the Sun" vs. "Unfollow the Sun" Conflict
+              The Midday Solar vs. Midnight Cooling Dilemma
             </h3>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="badge badge-coral">Midday: Solar Peak (Low CO₂)</span>
+            <span className="badge badge-coral">Midday: Solar Peak (Low CO₂, High Heat)</span>
             <span style={{ color: 'var(--text-dim)' }}>vs</span>
-            <span className="badge badge-cyan">Midnight: Cool Air (Low Water)</span>
+            <span className="badge badge-cyan">Midnight: Cold Air (Low Water, Fossil Fuel Grid)</span>
           </div>
         </div>
 
         <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-          Solar midday brings zero-carbon electricity but maximum ambient heat (spiking cooling
-          evaporation). Midnight cools the air (minimizing water loss) but relies on fossil-fueled
-          grid baseload. Adjust your priority weight to see the optimal operating hour shift:
+          During sunny afternoons, solar panels generate abundant clean electricity, keeping carbon emissions low. But hot afternoon temperatures force datacenter cooling towers to evaporate large volumes of water. At midnight, cool outdoor air lets datacenters cool servers with outside air alone, but the grid often relies on fossil fuels when the sun isn't shining. Adjust the slider to choose which priority matters more to you:
         </p>
 
         {/* Priority Slider */}
@@ -389,13 +387,13 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
             }}
           >
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Moon size={13} /> 00:00 Night
+              <Moon size={13} /> 00:00 Cool Night
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Sun size={13} /> 12:00 Solar Peak
+              <Sun size={13} /> 12:00 Solar Midday
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Moon size={13} /> 23:00 Night
+              <Moon size={13} /> 23:00 Cool Night
             </span>
           </div>
 
@@ -434,11 +432,11 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
             <div style={{ display: 'flex', gap: '1rem' }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span style={{ width: '8px', height: '8px', background: '#f43f5e', borderRadius: '2px' }} />
-                Carbon Intensity (gCO₂/kWh)
+                Carbon Emissions (gCO₂/kWh)
               </span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span style={{ width: '8px', height: '8px', background: '#0284c7', borderRadius: '2px' }} />
-                Cooling Evaporation (WUE)
+                Cooling Water Evaporation (WUE)
               </span>
             </div>
 
@@ -464,7 +462,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               Radovanović et al. (2023) CICS Implementation
             </div>
             <h3 className="font-display" style={{ fontSize: '1.25rem', color: '#fff' }}>
-              Google CICS Flexible Batch Queue Simulator
+              Flexible Task Scheduling Simulator (Google CICS Framework)
             </h3>
           </div>
 
@@ -475,14 +473,14 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               id="cics-mode-urgent-btn"
               onClick={() => handleEcoQueueToggle('urgent')}
             >
-              <Clock size={14} /> Urgent (Run Now)
+              <Clock size={14} /> Urgent (Answer Right Away)
             </button>
             <button
               className={`cics-mode-btn eco ${queueMode === 'eco' ? 'active' : ''}`}
               id="cics-mode-eco-btn"
               onClick={() => handleEcoQueueToggle('eco')}
             >
-              <Sparkles size={14} /> Eco-Queue (Shift up to 24h)
+              <Sparkles size={14} /> Flexible Queue (Wait for Best Hour)
             </button>
           </div>
         </div>
@@ -500,8 +498,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               Running Inflexible Query Immediately at Peak Afternoon Hour ({cicsResult.currentHour}:00)
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-              This query executes against peak ambient temperatures and high thermal stress with
-              zero load shifting.
+              Because this query requires an immediate response, it runs during peak outdoor temperatures and peak grid demand without waiting for cleaner conditions.
             </p>
           </div>
         ) : (
@@ -538,7 +535,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
                   Computation Shifted to Optimal Window: {cicsResult.optimalHour}:00
                 </div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--eco-emerald-light)' }}>
-                  Delayed {cicsResult.delayHours} hours into low-carbon / cool-temperature valley.
+                  Delayed {cicsResult.delayHours} hours into a cool-temperature, clean-energy window.
                 </div>
               </div>
             </div>
@@ -574,25 +571,25 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
             <div className="recom-hero-left">
               <div className="recom-badge-live">
                 <CloudSun size={14} />
-                <span>OPEN-METEO LIVE RECOMMENDATION ENGINE</span>
+                <span>LIVE WEATHER RECOMMENDATION</span>
               </div>
               <h3 className="recom-hero-title">
                 {weatherRecommendation.isCurrentOptimal ? (
-                  <span>★ Optimal Siting Active: {location.name}</span>
+                  <span>★ Optimal Location Active: {location.name}</span>
                 ) : (
                   <span>
-                    Recommendation: Route to {weatherRecommendation.bestOverall.location.name}
+                    Recommendation: Route Query to {weatherRecommendation.bestOverall.location.name}
                   </span>
                 )}
               </h3>
               <p className="recom-hero-desc">
                 {weatherRecommendation.isCurrentOptimal ? (
                   <>
-                    Your current hub ({location.name}) offers the lowest composite water & carbon footprint globally under current weather ({weather?.temperatureC}°C, {weather?.relativeHumidity}% RH).
+                    Your current datacenter ({location.name}) offers the lowest combined water and carbon footprint globally under current weather ({weather?.temperatureC}°C, {weather?.relativeHumidity}% humidity).
                   </>
                 ) : (
                   <>
-                    Based on real-time Open-Meteo telemetry across all 18 coordinates, {weatherRecommendation.bestOverall.location.name} is currently experiencing {weatherRecommendation.bestOverall.weather.temperatureC}°C ambient temperatures ({weatherRecommendation.bestOverall.coolingStatus === 'free-cooling' ? 'free air-cooling economizer active' : 'favorable thermodynamic wet-bulb'}), reducing evaporative water stress.
+                    Based on real-time weather across all 18 datacenter locations, {weatherRecommendation.bestOverall.location.name} is currently experiencing cool {weatherRecommendation.bestOverall.weather.temperatureC}°C weather ({weatherRecommendation.bestOverall.coolingStatus === 'free-cooling' ? 'free outdoor air cooling active' : 'favorable cooling conditions'}), saving water and carbon compared to warmer locations.
                   </>
                 )}
               </p>
@@ -688,10 +685,10 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
                 textTransform: 'uppercase',
               }}
             >
-              18 Hyperscale Hubs Live Telemetry Matrix
+              18 Global Datacenters Monitored Live
             </div>
             <h3 className="font-display" style={{ fontSize: '1.2rem', color: '#fff' }}>
-              Real-Time Weather & Siting Leaderboard
+              Real-Time Weather & Location Leaderboard
             </h3>
           </div>
 
@@ -710,7 +707,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
                 }}
                 onClick={() => setSortBy('rank')}
               >
-                ★ Best Rank
+                ★ Overall Best
               </button>
               <button
                 type="button"
@@ -749,7 +746,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
                 }}
                 onClick={() => setSortBy('temp')}
               >
-                ❄️ Coldest
+                ❄️ Coolest
               </button>
             </div>
 
@@ -801,10 +798,10 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               <tr>
                 <th>Rank & Location</th>
                 <th>Region</th>
-                <th>Live Weather (Open-Meteo)</th>
-                <th>Thermodynamic Regime</th>
-                <th>Adjusted WUE</th>
-                <th>Grid Carbon</th>
+                <th>Current Weather</th>
+                <th>Cooling Mode</th>
+                <th>Cooling Water (L/kWh)</th>
+                <th>Grid Carbon (kg/kWh)</th>
                 <th>Water / Query</th>
                 <th>Carbon / Query</th>
                 <th>Action</th>

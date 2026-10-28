@@ -137,11 +137,17 @@ export const App: React.FC = () => {
       <main className="container">
         {/* Simple Minimal Page Intro */}
         <header className="page-intro">
-          <span className="page-intro-badge">Peer-Reviewed Empirical Model</span>
-          <h1 className="page-title">AI Query Carbon & Water Footprint Calculator</h1>
+          <span className="page-intro-badge">Interactive Science Project</span>
+          <h1 className="page-title">How Much Energy and Water Does an AI Query Really Use?</h1>
           <p className="page-lead">
-            Estimate the physical electricity consumption, evaporative cooling water, and carbon emissions
-            for generative AI inference queries based on empirical peer-reviewed data center literature (Li et al. CACM 2025, Xiao et al. Nature Sustainability 2025).
+            Every time you ask an AI model a question, thousands of specialized computer chips process your words.
+            Those chips consume electricity, generate intense heat, and require continuous cooling.
+            This project lets you explore the physical footprint of any prompt—estimating the electricity drawn from the grid,
+            the drinking water evaporated in cooling towers, and the carbon emissions released into the air.
+          </p>
+          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+            Calculations are based on peer-reviewed measurements from researchers at UC Riverside, Purdue University, and Google
+            (Li et al. CACM 2025, Xiao et al. Nature Sustainability 2025).
           </p>
         </header>
 
@@ -152,12 +158,12 @@ export const App: React.FC = () => {
           <div className="feature-header">
             <div className="feature-tag-row">
               <span className="feature-number-badge">Feature 01</span>
-              <span className="feature-category">Core Interactive Tool</span>
+              <span className="feature-category">Interactive Calculator</span>
             </div>
-            <h2 className="feature-title">The Query & Its Environmental Impact</h2>
+            <h2 className="feature-title">Your Question and Its Real-World Impact</h2>
             <p className="feature-desc">
-              Enter or select a prompt query, choose an AI foundation model and data center location,
-              and inspect the real-time environmental receipt accounting for GPU energy, cooling water, and carbon.
+              Choose an example prompt or type your own question below. Select an AI model and a data center location
+              to see an instant estimate of the electricity, water, and carbon needed to generate the answer.
             </p>
           </div>
 
@@ -189,12 +195,14 @@ export const App: React.FC = () => {
           <div className="feature-header">
             <div className="feature-tag-row">
               <span className="feature-number-badge">Feature 02</span>
-              <span className="feature-category">Physical Thermodynamics</span>
+              <span className="feature-category">How It Works</span>
             </div>
-            <h2 className="feature-title">Scope 1 vs Scope 2 Thermodynamic Flow</h2>
+            <h2 className="feature-title">Where Does the Water Actually Go?</h2>
             <p className="feature-desc">
-              Explore where water and electricity are physically consumed during an inference query:
-              Scope 1 on-site evaporative cooling towers (~29%) versus Scope 2 off-site thermoelectric power plants (~71%).
+              Most people are surprised to learn that AI consumes water. In reality, water is used in two separate places:
+              about <strong>29% evaporates on-site</strong> in cooling towers right outside the data center (Scope 1),
+              while <strong>71% is consumed off-site</strong> at the power plants generating electricity for the grid (Scope 2).
+              Watch the animated simulation below to see how heat moves through the system.
             </p>
           </div>
 
@@ -208,12 +216,14 @@ export const App: React.FC = () => {
           <div className="feature-header">
             <div className="feature-tag-row">
               <span className="feature-number-badge">Feature 03</span>
-              <span className="feature-category">Spatiotemporal Dispatch</span>
+              <span className="feature-category">Smart Routing</span>
             </div>
-            <h2 className="feature-title">Global Data Centers & Grid Routing Telemetry</h2>
+            <h2 className="feature-title">Global Data Centers and Green Grid Routing</h2>
             <p className="feature-desc">
-              Real-time Open-Meteo ambient weather and electricity grid carbon intensity across 18 hyperscale campuses.
-              Route compute dynamically to cooler climates and renewable grids to reduce emissions up to 3.8x.
+              Because weather changes with the seasons and electrical grids change throughout the day,
+              where and when an AI query runs matters tremendously.
+              Routing your query to a facility in a cooler climate with abundant wind, solar, or hydro power
+              can reduce carbon emissions by up to 3.8 times without changing the answer you receive.
             </p>
           </div>
 
@@ -235,18 +245,19 @@ export const App: React.FC = () => {
           <div className="feature-header">
             <div className="feature-tag-row">
               <span className="feature-number-badge">Feature 04</span>
-              <span className="feature-category">Mathematical Derivations</span>
+              <span className="feature-category">The Science & Equations</span>
             </div>
-            <h2 className="feature-title">Thermodynamic & Carbon Formulations</h2>
+            <h2 className="feature-title">The Math Behind the Calculator</h2>
             <p className="feature-desc">
-              Core empirical equations derived from landmark peer-reviewed research papers.
+              How do we turn a paragraph of text into watt-hours, milliliters of water, and grams of greenhouse gas?
+              Here are the core scientific formulas used in our model, explained step by step in plain English.
             </p>
           </div>
 
           <div className="formulations-grid">
             <div className="formula-card">
               <div className="formula-card-title">
-                <span>1. Inference Energy Scaling</span>
+                <span>1. Server Energy for a Query</span>
                 <span className="badge badge-amber">Li / Stojkovic (2025)</span>
               </div>
               <div className="formula-equation-box">
@@ -256,14 +267,17 @@ export const App: React.FC = () => {
                 />
               </div>
               <p className="formula-desc">
-                Accounts for compute-bound prompt prefill (30%) and sequential memory-bound autoregressive decoding (70%) reading billions of weights from HBM memory.
+                <strong>In plain words:</strong> Answering a question has two distinct phases.
+                First, the AI reads your prompt all at once (about 30% of energy use).
+                Second, it generates the response word by word (about 70% of energy use).
+                Writing answers takes far more energy than reading questions because the computer chips must reload billions of model weights into memory for every single word they output.
               </p>
             </div>
 
             <div className="formula-card">
               <div className="formula-card-title">
-                <span>2. Total Facility Power (PUE)</span>
-                <span className="badge badge-amber">ASHRAE TC 9.9</span>
+                <span>2. Total Facility Power Overhead (PUE)</span>
+                <span className="badge badge-amber">Building Efficiency</span>
               </div>
               <div className="formula-equation-box">
                 <MathFormula
@@ -272,13 +286,16 @@ export const App: React.FC = () => {
                 />
               </div>
               <p className="formula-desc">
-                PUE measures total facility electricity divided by IT equipment electricity. Overhead includes chillers, cooling tower fans, pumps, and power delivery transformers.
+                <strong>In plain words:</strong> The computer chips are not the only things using power.
+                The building also runs giant cooling fans, water pumps, lighting, and power backup units.
+                The Power Usage Effectiveness (PUE) is the multiplier that accounts for this building overhead.
+                A PUE of 1.20 means that for every 1.00 Watt the chips consume, the building uses another 0.20 Watts to keep them running smoothly.
               </p>
             </div>
 
             <div className="formula-card">
               <div className="formula-card-title">
-                <span>3. Scope 1 On-Site Water Evaporation</span>
+                <span>3. On-Site Water Evaporation</span>
                 <span className="badge badge-cyan">Li et al. (CACM 2025)</span>
               </div>
               <div className="formula-equation-box">
@@ -288,13 +305,15 @@ export const App: React.FC = () => {
                 />
               </div>
               <p className="formula-desc">
-                Direct water consumption in data center cooling towers. Higher ambient outdoor temperatures increase thermodynamic evaporation rates per kilowatt-hour.
+                <strong>In plain words:</strong> When server chips heat up, chilled water loops carry the heat up to rooftop cooling towers.
+                There, heat is rejected into the outdoor air by evaporating water into clean steam.
+                On hotter summer days, the cooling towers must evaporate significantly more water to keep the chips at safe operating temperatures.
               </p>
             </div>
 
             <div className="formula-card">
               <div className="formula-card-title">
-                <span>4. Scope 2 Off-Site Grid Water</span>
+                <span>4. Off-Site Power Plant Water</span>
                 <span className="badge badge-cyan">Xiao et al. (Nature Sust. 2025)</span>
               </div>
               <div className="formula-equation-box">
@@ -304,7 +323,10 @@ export const App: React.FC = () => {
                 />
               </div>
               <p className="formula-desc">
-                Water consumed at distant thermoelectric power plants (nuclear, coal, gas) and evaporated from open hydroelectric dam reservoirs across regional electrical grids.
+                <strong>In plain words:</strong> Generating electricity also consumes water.
+                Coal, natural gas, and nuclear power plants boil water into steam to turn turbines, then cool that steam back down using water from rivers and lakes.
+                Even hydroelectric dams lose water through surface evaporation in the sun.
+                This off-site water usage (EWIF) is often several times larger than the water evaporated at the data center building itself.
               </p>
             </div>
           </div>
@@ -317,11 +339,12 @@ export const App: React.FC = () => {
           <div className="feature-header">
             <div className="feature-tag-row">
               <span className="feature-number-badge">Feature 05</span>
-              <span className="feature-category">Academic Literature & Data</span>
+              <span className="feature-category">Sources & Common Questions</span>
             </div>
-            <h2 className="feature-title">Peer-Reviewed Literature & Datasets</h2>
+            <h2 className="feature-title">Scientific Literature & Helpful Answers</h2>
             <p className="feature-desc">
-              Every constant, PUE curve, and water factor in Aetheria is sourced directly from peer-reviewed scientific literature.
+              Explore the peer-reviewed research papers that provided the numbers for this project,
+              and read clear answers to common questions about AI energy and water consumption.
             </p>
           </div>
 
@@ -334,9 +357,10 @@ export const App: React.FC = () => {
           {/* Standalone Monograph Link Box */}
           <div className="report-cta-box">
             <div className="report-cta-info">
-              <h3>Scientific Monograph & 18-Datacenter Audit Report</h3>
+              <h3>Read the Complete Technical Report</h3>
               <p>
-                Read our complete academic monograph with extended mathematical derivations, sensitivity analyses, and full telemetry table.
+                Interested in the full academic derivations, sensitivity charts, and complete 18-datacenter telemetry table?
+                Read our in-depth research monograph.
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -347,7 +371,7 @@ export const App: React.FC = () => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
-                Read In-App Monograph
+                Read Report Inside App
               </button>
               <a
                 href="./report.html"
@@ -355,7 +379,7 @@ export const App: React.FC = () => {
                 rel="noopener noreferrer"
                 className="btn-secondary"
               >
-                <span>Open Standalone Report</span>
+                <span>Open in Separate Tab</span>
                 <ArrowUpRight size={13} />
               </a>
             </div>
@@ -367,7 +391,7 @@ export const App: React.FC = () => {
       <footer className="minimal-footer">
         <div className="container footer-inner">
           <div>
-            <strong>AETHERIA</strong> · Open Science AI Environmental Simulator (© {CURRENT_YEAR}).
+            <strong>AETHERIA</strong> · An Educational AI Environmental Impact Simulator (© {CURRENT_YEAR}).
           </div>
           <ul className="footer-links">
             <li>
@@ -384,7 +408,7 @@ export const App: React.FC = () => {
             </li>
             <li>
               <a href="./report.html" target="_blank" rel="noopener noreferrer">
-                Full Report Monograph ↗
+                Technical Report ↗
               </a>
             </li>
           </ul>

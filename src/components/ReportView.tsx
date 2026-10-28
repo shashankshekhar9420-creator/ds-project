@@ -15,6 +15,7 @@ import {
 import { MathFormula } from './MathFormula';
 import { LOCATIONS } from '../data/locations';
 import { MITIGATIONS } from '../data/mitigations';
+import '../styles/report.css';
 
 interface ReportViewProps {
   onBackToSimulator?: () => void;

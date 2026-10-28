@@ -15,7 +15,7 @@ export const ReportCTASection: React.FC<ReportCTASectionProps> = ({ onOpenReport
         <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>
           The Scientific Concepts & Features Architecture Report
         </h3>
-        <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '65ch', marginBottom: '16px' }}>
+        <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', lineHeight: 1.6, width: '100%', marginBottom: '16px' }}>
           We compiled a comprehensive, easy-to-navigate scientific report explaining all key platform features, how computing models consume electricity and water, the full mathematical proofs, and a detailed audit of 18 global datacenter locations.
         </p>
 

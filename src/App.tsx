@@ -199,10 +199,11 @@ export const App: React.FC = () => {
             </div>
             <h2 className="feature-title">Where Does the Water Actually Go?</h2>
             <p className="feature-desc">
-              Most people are surprised to learn that AI consumes water. In reality, water is used in two separate places:
-              about <strong>29% evaporates on-site</strong> in cooling towers right outside the data center (Scope 1),
-              while <strong>71% is consumed off-site</strong> at the power plants generating electricity for the grid (Scope 2).
-              Watch the animated simulation below to see how heat moves through the system.
+              Every time an AI answers a question, electricity turns into heat inside high-powered computing chips.
+              To keep those chips from overheating, datacenters evaporate clean water in cooling towers right outside the facility
+              (<strong>Scope 1: ~29% on-site evaporation</strong>). At the same time, the power plants generating that electricity
+              consume even more water off-site through thermoelectric steam cooling and reservoir evaporation (<strong>Scope 2: ~71% off-site water</strong>).
+              Explore the animated simulation below to see how electricity and cooling water flow together through the grid.
             </p>
           </div>
 

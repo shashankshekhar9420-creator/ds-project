@@ -1,0 +1,790 @@
+/* --------------------------------------------------------------------------
+   Report View / Academic Monograph Styles (Clean Minimal Light Theme)
+   -------------------------------------------------------------------------- */
+
+.report-container {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* Sticky Top Navigation Bar */
+.report-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  box-shadow: var(--shadow-subtle);
+}
+
+.report-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.report-nav-left, .report-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.report-tag-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  padding: 5px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.pulsing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Main 2-Column Monograph Layout */
+.report-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 96px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .report-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Sticky Sidebar & Table of Contents */
+.report-sidebar {
+  position: sticky;
+  top: 76px;
+}
+
+.sidebar-sticky-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  box-shadow: var(--shadow-subtle);
+}
+
+.sidebar-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-links {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Individual Table of Contents Link Button */
+.toc-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-left: 2px solid transparent;
+  padding: 8px 12px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.8125rem;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 150ms ease;
+  line-height: 1.4;
+  box-shadow: none;
+}
+
+.toc-link:hover {
+  color: var(--text);
+  background: var(--bg);
+  border-left-color: var(--border);
+}
+
+.toc-link.active {
+  color: var(--accent);
+  background: var(--bg);
+  border-left-color: var(--accent);
+  font-weight: 600;
+  box-shadow: var(--shadow-subtle);
+}
+
+.sidebar-meta-card {
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.meta-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Main Content Area */
+.report-content {
+  min-width: 0;
+}
+
+.report-header-section {
+  padding-bottom: 32px;
+}
+
+.pill-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.report-main-title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.report-lead-text {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.report-authors-bar {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 32px;
+}
+
+.author-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-role {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.author-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Executive Abstract Callout */
+.abstract-callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.abstract-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.abstract-callout p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.abstract-callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Sections */
+.report-section {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-index-pill {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.feature-icon-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.feature-number {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.feature-card .feature-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.feature-card .feature-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.feature-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.detail-item {
+  font-size: 0.8125rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Editorial Callouts & Comparisons */
+.editorial-callout-card, .math-deepdive-box, .formula-block-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.editorial-callout-card h3, .math-deepdive-box h4, .formula-block-card h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.editorial-callout-card p, .math-deepdive-box p, .formula-block-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.math-caption {
+  font-size: 0.8125rem !important;
+  color: var(--text-muted) !important;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.phase-comparison-grid, .scopes-cards-container, .dilemma-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 680px) {
+  .phase-comparison-grid, .scopes-cards-container, .dilemma-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.phase-box, .scope-card, .dilemma-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phase-tag, .scope-badge, .dilemma-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.phase-box h4, .scope-header h3, .dilemma-box h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.phase-box p, .scope-card p, .dilemma-box ul {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.dilemma-box ul {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phase-metric {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.phase-metric strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.scope-bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.bullet-item {
+  font-size: 0.8125rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* 71% Off-Site Water Paradox Ratio Bar */
+.paradox-callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.paradox-ratio-bar {
+  display: flex;
+  height: 48px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.ratio-segment.offsite {
+  background: var(--accent);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.ratio-segment.onsite {
+  background: var(--border);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.ratio-pct {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+.ratio-lbl {
+  font-size: 0.6875rem;
+  opacity: 0.9;
+}
+
+.paradox-explanation h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.paradox-explanation p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Hydropower Inversion */
+.hydro-comparison-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+@media (max-width: 680px) {
+  .hydro-comparison-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hydro-stat-col {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hydro-location {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hydro-metric-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hydro-val {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.hydro-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.hydro-notes {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.paradox-summary-text {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+/* Report Tables */
+.mitigations-table-wrapper, .table-responsive-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  box-shadow: var(--shadow-subtle);
+  margin: 20px 0;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.report-table th {
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.report-table tr:last-child td {
+  border-bottom: none;
+}
+
+.report-table tr:hover td {
+  background: var(--surface);
+}
+
+.highlight-green, .highlight-cyan, .highlight-coral {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Parameter definitions */
+.parameter-definitions {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Search input */
+.table-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.875rem;
+  color: var(--text);
+  outline: none;
+}
+
+.sub-country {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.profile-cell {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Academic Bibliography */
+.bibliography-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.bib-item {
+  display: flex;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.bib-num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.bib-content {
+  color: var(--text);
+}
+
+.bib-doi {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Report Footer CTA */
+.report-footer-cta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+
+.cta-left h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.cta-left p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.btn-pill-white {
+  background: var(--accent);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 150ms ease;
+}
+
+.btn-pill-white:hover {
+  background: var(--accent-hover);
+  color: #FFFFFF;
+  text-decoration: none;
+}

@@ -401,10 +401,10 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
 
           <div className="timeline-bars-grid">
             {cicsResult.hourlyPoints.map((pt) => {
-              const maxCarbonHeight = 50;
-              const maxWaterHeight = 50;
-              const carbonH = Math.min(maxCarbonHeight, Math.max(6, pt.carbonIntensity * 90));
-              const waterH = Math.min(maxWaterHeight, Math.max(6, pt.effectiveWUE * 35));
+              const maxCarbonHeight = 40;
+              const maxWaterHeight = 40;
+              const carbonH = Math.min(maxCarbonHeight, Math.max(5, pt.carbonIntensity * 70));
+              const waterH = Math.min(maxWaterHeight, Math.max(5, pt.effectiveWUE * 28));
 
               return (
                 <div
@@ -422,24 +422,14 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
             })}
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginTop: '10px',
-              fontSize: '0.75rem',
-              flexWrap: 'wrap',
-              gap: '8px',
-            }}
-          >
-            <div style={{ display: 'flex', gap: '16px' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ width: '8px', height: '8px', background: 'var(--border)', borderRadius: '2px' }} />
+          <div className="timeline-legend-row">
+            <div style={{ display: 'flex', gap: '18px', flexWrap: 'wrap' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
+                <span style={{ width: '10px', height: '10px', background: 'var(--border)', borderRadius: '2px' }} />
                 Carbon Emissions (gCO₂/kWh)
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ width: '8px', height: '8px', background: 'var(--accent)', borderRadius: '2px' }} />
+              <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text)' }}>
+                <span style={{ width: '10px', height: '10px', background: 'var(--accent)', borderRadius: '2px' }} />
                 Cooling Water Evaporation (WUE)
               </span>
             </div>

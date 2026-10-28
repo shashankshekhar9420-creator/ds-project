@@ -74,13 +74,15 @@
 .timeline-bars-grid {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
-  gap: 2px;
-  height: 52px;
+  gap: 3px;
+  height: 110px;
   align-items: end;
   background: var(--surface);
-  padding: 6px;
+  padding: 18px 8px 8px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
+  box-sizing: border-box;
+  margin-bottom: 12px;
 }
 
 .hour-bar-col {
@@ -88,9 +90,14 @@
   flex-direction: column-reverse;
   align-items: center;
   height: 100%;
-  gap: 1px;
+  gap: 2px;
   position: relative;
   cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.hour-bar-col:hover {
+  opacity: 0.8;
 }
 
 .hour-bar-carbon {
@@ -109,11 +116,23 @@
 
 .optimal-hour-indicator {
   position: absolute;
-  top: -8px;
+  top: -14px;
   width: 6px;
   height: 6px;
   background: var(--accent);
   border-radius: 50%;
+}
+
+.timeline-legend-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* Weather Hero Recommendation Banner */
@@ -156,8 +175,8 @@
 .recom-hero-desc {
   font-size: 0.875rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  max-width: 65ch;
+  line-height: 1.55;
+  width: 100%;
   margin-bottom: 16px;
 }
 

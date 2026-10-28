@@ -359,18 +359,8 @@ export const ModuleB3B1BExplainer: React.FC = () => {
 
   return (
     <div className="explainer-container" id="explainer-module">
-      {/* Section Header */}
-      <div style={{ marginBottom: '8px' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: '4px' }}>
-          How AI Uses Electricity and Water
-        </h2>
-        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '65ch', lineHeight: 1.6 }}>
-          Every time an AI answers a question, electricity turns into heat inside high-powered computing chips. To keep those chips from overheating, datacenters evaporate clean water in cooling towers. At the same time, the power plants generating that electricity consume even more water off-site. Here is how both systems work together.
-        </p>
-      </div>
-
       {/* Segmented Sub-Navigation Pills */}
-      <div className="sub-nav-segmented" style={{ display: 'flex', gap: '6px', background: 'var(--surface)', padding: '4px', borderRadius: 'var(--radius)', border: '1px solid var(--border)', width: 'fit-content', flexWrap: 'wrap' }}>
+      <div className="sub-nav-segmented" style={{ display: 'flex', gap: '6px', background: 'var(--surface)', padding: '4px', borderRadius: 'var(--radius)', border: '1px solid var(--border)', width: 'fit-content', flexWrap: 'wrap', marginBottom: '8px' }}>
         <button
           className={`sub-nav-pill ${activeSubTab === 'canvas' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('canvas')}

@@ -1,15 +1,23 @@
-# React + TypeScript + Vite
+# AETHERIA | Sustainable AI Query Hydrology & Carbon Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> **Live Deployment:** [https://shashankshekhar9420-creator.github.io/ds-project/](https://shashankshekhar9420-creator.github.io/ds-project/)  
+> **Scientific Monograph:** [https://shashankshekhar9420-creator.github.io/ds-project/report.html](https://shashankshekhar9420-creator.github.io/ds-project/report.html)
 
-Currently, two official plugins are available:
+A publication-grade interactive simulator and 3Blue1Brown-style explorable explanation of generative AI inference's energy, water, and carbon footprint based on peer-reviewed empirical literature (Li et al. CACM 2025, Xiao et al. Nature Sustainability 2025, Radovanović et al. Google CICS).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- **Query Sandbox & Environmental Receipt**: Real-time tokenization, PUE/WUE modeling, dynamic cooling towers, and live Open-Meteo telemetry across 18 hyperscale data center campuses.
+- **3Blue1Brown-Style Explorable Explanation**: Interactive thermodynamic flows, scope 1 vs scope 2 water, and heat exchangers.
+- **Spatiotemporal Load Shift Optimizer**: Cleanest data center routing recommendations and 24h carbon intensity modeling.
+- **Scientific Monograph Report**: Standalone peer-reviewed technical monograph with rendered LaTeX equations and datacenter audit matrix.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Deployment & CI/CD
+This project is configured with GitHub Actions for automated continuous deployment to **GitHub Pages**:
+- Any push to the `main` branch automatically triggers `.github/workflows/deploy.yml`.
+- Manual deployment can also be executed with:
+  ```bash
+  npm run deploy
+  ```
 
 ## Expanding the Oxlint configuration
 

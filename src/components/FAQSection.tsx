@@ -65,12 +65,12 @@ export const FAQSection: React.FC = () => {
       <div className="faq-grid-layout">
         {/* Left Column: Heading & Callout */}
         <div className="faq-left-col">
-          <div className="pill-badge-luxury">
+          <div className="badge">
             <span>RESEARCH FAQ</span>
           </div>
-          <h2 className="faq-main-title">
-            Quick answers to common questions.
-          </h2>
+          <h3 className="faq-main-title">
+            Quick answers to common questions
+          </h3>
           <p className="faq-lead-desc">
             Clear, straightforward answers about how AI uses electricity and water, backed by peer-reviewed scientific studies.
           </p>
@@ -82,7 +82,7 @@ export const FAQSection: React.FC = () => {
               href="./report.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pill-white btn-sm"
+              className="btn-primary btn-sm"
               id="faq-report-link"
             >
               <span>Explore Research Report ↗</span>
@@ -101,7 +101,7 @@ export const FAQSection: React.FC = () => {
                 onClick={() => toggleFAQ(faq.id)}
               >
                 <div className="faq-question-row">
-                  <h3 className="faq-question-text">{faq.question}</h3>
+                  <h4 className="faq-question-text">{faq.question}</h4>
                   <button className="faq-toggle-icon" aria-label="Toggle answer">
                     {isOpen ? <Minus size={18} /> : <Plus size={18} />}
                   </button>

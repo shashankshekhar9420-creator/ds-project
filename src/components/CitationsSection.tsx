@@ -38,13 +38,13 @@ export const CitationsSection: React.FC = () => {
 
   return (
     <section className="citations-editorial-section" id="citations-section">
-      <div className="section-head-wrap">
-        <div className="pill-badge-luxury">
+      <div className="section-head-wrap" style={{ marginBottom: '16px' }}>
+        <div className="badge" style={{ marginBottom: '8px' }}>
           <span>PEER-REVIEWED FOUNDATIONS</span>
         </div>
-        <h2 className="section-title-large">
-          Scientific literature & verified datasets.
-        </h2>
+        <h3 className="section-title-large">
+          Scientific literature & verified datasets
+        </h3>
         <p className="section-subtitle-editorial">
           Every formula, energy measurement, cooling rate, and carbon calculation in this project is drawn directly from peer-reviewed scientific publications.
         </p>

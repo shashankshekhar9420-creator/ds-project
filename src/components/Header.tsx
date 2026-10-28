@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
           {/* Brand Identity */}
           <a href="#feature-query" className="brand-wrapper">
             <div className="brand-logo-icon">
-              <span style={{ fontWeight: 800, fontSize: '0.9rem' }}>Æ</span>
+              <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>Æ</span>
             </div>
             <div className="brand-text-block">
               <div className="brand-title">AETHERIA</div>
@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
             </div>
           </a>
 
-          {/* Clean Old-School Anchor Navigation to Feature Sections */}
+          {/* Clean Minimal Anchor Navigation to Feature Sections */}
           <nav className="nav-tabs" aria-label="Feature Sections Navigation">
             <a href="#feature-query" className="nav-tab-btn">
               <span>1. Query & Impact</span>
@@ -73,12 +73,12 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
 
             {onOpenReport ? (
               <button
-                className="btn-pill-ghost btn-sm"
+                className="btn-secondary btn-sm"
                 onClick={onOpenReport}
                 id="nav-report-btn"
                 title="View full research report"
               >
-                <FileText size={12} />
+                <FileText size={13} />
                 <span>Full Report</span>
               </button>
             ) : (
@@ -86,13 +86,13 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
                 href="./report.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-pill-ghost btn-sm"
+                className="btn-secondary btn-sm"
                 id="nav-report-link"
                 title="Open full interactive scientific report in a new tab"
               >
-                <FileText size={12} />
+                <FileText size={13} />
                 <span>Full Report</span>
-                <ArrowUpRight size={11} />
+                <ArrowUpRight size={12} />
               </a>
             )}
           </div>

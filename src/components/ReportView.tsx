@@ -58,7 +58,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
           <div className="report-nav-left">
             {onBackToSimulator ? (
               <button
-                className="btn-pill-ghost btn-sm"
+                className="btn-secondary btn-sm"
                 onClick={onBackToSimulator}
                 id="btn-back-to-simulator"
               >
@@ -66,7 +66,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
                 <span>Return to Live Simulator</span>
               </button>
             ) : (
-              <a href="./" className="btn-pill-ghost btn-sm" id="btn-back-to-home">
+              <a href="./" className="btn-secondary btn-sm" id="btn-back-to-home">
                 <ArrowLeft size={14} />
                 <span>Return to Live Simulator</span>
               </a>
@@ -79,7 +79,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
 
           <div className="report-nav-right">
             <button
-              className="btn-pill-ghost btn-sm"
+              className="btn-secondary btn-sm"
               onClick={handleCopyLink}
               title="Copy link to report"
             >
@@ -87,7 +87,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
               <span>{copiedLink ? 'Copied Link!' : 'Share Report'}</span>
             </button>
             <button
-              className="btn-pill-white btn-sm"
+              className="btn-primary btn-sm"
               onClick={() => window.print()}
               title="Print or export as PDF"
             >

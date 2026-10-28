@@ -258,7 +258,7 @@ export const App: React.FC = () => {
             <div className="formula-card">
               <div className="formula-card-title">
                 <span>1. Server Energy for a Query</span>
-                <span className="badge badge-amber">Li / Stojkovic (2025)</span>
+                <span className="badge">Li / Stojkovic (2025)</span>
               </div>
               <div className="formula-equation-box">
                 <MathFormula
@@ -277,7 +277,7 @@ export const App: React.FC = () => {
             <div className="formula-card">
               <div className="formula-card-title">
                 <span>2. Total Facility Power Overhead (PUE)</span>
-                <span className="badge badge-amber">Building Efficiency</span>
+                <span className="badge">Building Efficiency</span>
               </div>
               <div className="formula-equation-box">
                 <MathFormula
@@ -296,7 +296,7 @@ export const App: React.FC = () => {
             <div className="formula-card">
               <div className="formula-card-title">
                 <span>3. On-Site Water Evaporation</span>
-                <span className="badge badge-cyan">Li et al. (CACM 2025)</span>
+                <span className="badge">Li et al. (CACM 2025)</span>
               </div>
               <div className="formula-equation-box">
                 <MathFormula
@@ -314,7 +314,7 @@ export const App: React.FC = () => {
             <div className="formula-card">
               <div className="formula-card-title">
                 <span>4. Off-Site Power Plant Water</span>
-                <span className="badge badge-cyan">Xiao et al. (Nature Sust. 2025)</span>
+                <span className="badge">Xiao et al. (Nature Sust. 2025)</span>
               </div>
               <div className="formula-equation-box">
                 <MathFormula
@@ -350,7 +350,7 @@ export const App: React.FC = () => {
 
           <CitationsSection />
 
-          <div style={{ marginTop: '2rem' }}>
+          <div style={{ marginTop: '32px' }}>
             <FAQSection />
           </div>
 
@@ -363,7 +363,7 @@ export const App: React.FC = () => {
                 Read our in-depth research monograph.
               </p>
             </div>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button
                 className="btn-primary"
                 onClick={() => {

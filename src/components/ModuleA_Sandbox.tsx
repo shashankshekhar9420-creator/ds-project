@@ -135,32 +135,33 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
     <div className="sandbox-container" id="sandbox-module">
       {/* LEFT COLUMN: Interactive Prompt & Architecture Sandbox */}
       <div className="prompt-console">
-        <div className="glass-panel">
+        <div className="card">
           <div className="console-header">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div
                 style={{
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '6px',
-                  background: 'rgba(6, 182, 212, 0.15)',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: 'var(--radius)',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--water-cyan-light)',
+                  color: 'var(--accent)',
                 }}
               >
                 <Sparkles size={16} />
               </div>
-              <h2 className="font-display" style={{ fontSize: '1.15rem', fontWeight: 700 }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--text)' }}>
                 Interactive Query Calculator
-              </h2>
+              </h3>
             </div>
-            <span className="badge badge-cyan">Instant • Runs in your browser</span>
+            <span className="badge">Instant • Runs in your browser</span>
           </div>
 
           {/* Preset Chips */}
-          <div style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}>
+          <div style={{ marginTop: '12px', marginBottom: '8px' }}>
             <div className="presets-bar">
               {PROMPT_PRESETS.map((p) => (
                 <button
@@ -207,7 +208,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
                     display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
-                    fontSize: '0.75rem',
+                    fontSize: '0.8125rem',
                   }}
                 >
                   <RotateCcw size={12} /> Clear
@@ -217,11 +218,11 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           </div>
 
           {/* Model & Output Length Controls */}
-          <div className="controls-grid" style={{ marginTop: '1.25rem' }}>
+          <div className="controls-grid" style={{ marginTop: '20px' }}>
             <div className="control-group">
               <label className="control-label" htmlFor="model-select">
                 <span>AI Model Size</span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--energy-amber-light)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                   {model.parameters}
                 </span>
               </label>
@@ -243,19 +244,19 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               {model.isEfficient && (
                 <div
                   style={{
-                    fontSize: '0.72rem',
-                    color: '#f59e0b',
-                    background: 'rgba(245, 158, 11, 0.1)',
-                    padding: '4px 8px',
-                    borderRadius: '4px',
-                    border: '1px solid rgba(245, 158, 11, 0.25)',
+                    fontSize: '0.8125rem',
+                    color: 'var(--text)',
+                    background: 'var(--surface)',
+                    padding: '8px 12px',
+                    borderRadius: 'var(--radius)',
+                    border: '1px solid var(--border)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '4px',
-                    marginTop: '4px',
+                    gap: '6px',
+                    marginTop: '6px',
                   }}
                 >
-                  <AlertTriangle size={13} style={{ flexShrink: 0 }} />
+                  <AlertTriangle size={14} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                   <span>
                     <strong>The Efficiency Paradox (Rebound Effect):</strong> When models become cheaper and faster to run, people often ask many more questions. Total electricity and water use can actually rise unless overall usage is managed (Xiao et al., 2025).
                   </span>
@@ -266,7 +267,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
             <div className="control-group">
               <label className="control-label" htmlFor="location-select">
                 <span>Data Center Location</span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--water-cyan-light)' }} title="Facility overhead multiplier: How much total building energy is consumed per unit of server energy.">
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }} title="Facility overhead multiplier: How much total building energy is consumed per unit of server energy.">
                   Overhead Multiplier (PUE): {calculation.effectivePUE.toFixed(2)}
                 </span>
               </label>
@@ -289,9 +290,9 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               </select>
               <div
                 style={{
-                  fontSize: '0.72rem',
+                  fontSize: '0.75rem',
                   color: 'var(--text-muted)',
-                  marginTop: '2px',
+                  marginTop: '4px',
                 }}
               >
                 {location.profile}
@@ -305,29 +306,30 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               className="model-recommendation-card"
               id="model-optimization-box"
               style={{
-                marginTop: '1rem',
-                padding: '0.85rem 1rem',
-                background: 'rgba(245, 158, 11, 0.08)',
-                border: '1px solid rgba(245, 158, 11, 0.32)',
-                borderRadius: '8px',
+                marginTop: '16px',
+                padding: '16px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-card)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
-                gap: '0.75rem',
+                gap: '12px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', flex: '1 1 320px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', flex: '1 1 320px' }}>
                 <div
                   style={{
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '6px',
-                    background: 'rgba(245, 158, 11, 0.2)',
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: 'var(--radius)',
+                    background: 'var(--bg)',
+                    border: '1px solid var(--border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'var(--energy-amber-light)',
+                    color: 'var(--accent)',
                     flexShrink: 0,
                     marginTop: '2px',
                   }}
@@ -335,35 +337,35 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
                   <Cpu size={16} />
                 </div>
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#fff' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text)' }}>
                       Smarter Model Sizing:
                     </span>
                     <span
                       style={{
-                        fontSize: '0.68rem',
+                        fontSize: '0.75rem',
                         fontWeight: 600,
-                        padding: '1px 6px',
-                        borderRadius: '4px',
-                        background: 'rgba(245, 158, 11, 0.2)',
-                        color: 'var(--energy-amber-light)',
-                        border: '1px solid rgba(245, 158, 11, 0.35)',
+                        padding: '2px 8px',
+                        borderRadius: 'var(--radius)',
+                        background: 'var(--bg)',
+                        color: 'var(--text)',
+                        border: '1px solid var(--border)',
                       }}
                     >
                       {modelRecommendation.taskType}
                     </span>
                   </div>
-                  <div style={{ fontSize: '0.73rem', color: 'var(--text-secondary)', marginTop: '3px', lineHeight: 1.45 }}>
+                  <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '4px', lineHeight: 1.5 }}>
                     {modelRecommendation.reason}
                   </div>
-                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '6px' }}>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--energy-amber-light)' }}>
+                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
                       ⚡ -{modelRecommendation.energySavingsPct}% Energy
                     </span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--water-cyan-light)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
                       💧 -{modelRecommendation.waterSavingsMl} mL Water
                     </span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#f87171' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
                       ☁️ -{modelRecommendation.carbonSavingsGrams}g CO₂e
                     </span>
                   </div>
@@ -372,22 +374,9 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
 
               <button
                 type="button"
-                className="btn-apply-recommendation"
+                className="btn-primary btn-sm"
                 id="btn-apply-model-recommendation"
                 onClick={() => setModel(modelRecommendation.suggestedModel)}
-                style={{
-                  padding: '6px 12px',
-                  fontSize: '0.75rem',
-                  borderRadius: '6px',
-                  background: 'var(--energy-amber)',
-                  color: '#000',
-                  fontWeight: 700,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                  border: 'none',
-                }}
               >
                 <span>Switch to {modelRecommendation.suggestedModel.name}</span>
                 <ArrowUpRight size={13} />
@@ -398,21 +387,21 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           {modelRecommendation && modelRecommendation.isCurrentOptimal && promptText.trim().length > 0 && (
             <div
               style={{
-                marginTop: '0.75rem',
-                padding: '0.55rem 0.85rem',
-                background: 'rgba(16, 185, 129, 0.06)',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                borderRadius: '8px',
+                marginTop: '12px',
+                padding: '10px 14px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                fontSize: '0.73rem',
-                color: 'var(--text-secondary)',
+                fontSize: '0.8125rem',
+                color: 'var(--text)',
               }}
             >
-              <CheckCircle2 size={14} style={{ color: '#10b981', flexShrink: 0 }} />
+              <CheckCircle2 size={16} style={{ color: 'var(--accent)', flexShrink: 0 }} />
               <span>
-                <strong style={{ color: '#10b981' }}>Well Matched:</strong> {model.name} is well-suited for this {modelRecommendation.taskType} query without wasting power on an oversized model.
+                <strong>Well Matched:</strong> {model.name} is well-suited for this {modelRecommendation.taskType} query without wasting power on an oversized model.
               </span>
             </div>
           )}
@@ -423,25 +412,25 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               className="weather-recommendation-card"
               id="weather-recommendation-box"
               style={{
-                marginTop: '1rem',
-                padding: '0.85rem 1rem',
-                background: '#f0f9ff',
-                border: '1px solid #bae6fd',
-                borderRadius: 'var(--radius-sm)',
+                marginTop: '16px',
+                padding: '16px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-card)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
-                gap: '0.75rem',
+                gap: '12px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <CloudSun size={18} style={{ color: 'var(--water-cyan)', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <CloudSun size={20} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text)' }}>
                     Weather Optimization: {weatherRecommendation.bestOverall.location.name} is cooler ({weatherRecommendation.bestOverall.weather.temperatureC}°C vs {weather?.temperatureC}°C)
                   </div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                  <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                     Cool outside air reduces the need for water chillers. Rerouting saves roughly <strong>{weatherRecommendation.bestOverall.waterSavingsVsCurrentPct}% water</strong> and <strong>{weatherRecommendation.bestOverall.carbonSavingsVsCurrentPct}% carbon</strong> per query.
                   </div>
                 </div>
@@ -449,10 +438,9 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
 
               <button
                 type="button"
-                className="btn-apply-recommendation"
+                className="btn-primary btn-sm"
                 id="btn-apply-weather-recommendation"
                 onClick={() => setLocation(weatherRecommendation.bestOverall.location)}
-                style={{ padding: '6px 12px', fontSize: '0.75rem', borderRadius: '6px' }}
               >
                 <span>Switch to {weatherRecommendation.bestOverall.location.name}</span>
                 <ArrowUpRight size={13} />
@@ -463,19 +451,19 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           {weatherRecommendation && weatherRecommendation.isCurrentOptimal && (
             <div
               style={{
-                marginTop: '1rem',
-                padding: '0.65rem 0.85rem',
-                background: 'rgba(16, 185, 129, 0.06)',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                borderRadius: '8px',
+                marginTop: '12px',
+                padding: '10px 14px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                fontSize: '0.78rem',
-                color: 'var(--eco-emerald-light)',
+                fontSize: '0.8125rem',
+                color: 'var(--text)',
               }}
             >
-              <CheckCircle2 size={15} style={{ flexShrink: 0 }} />
+              <CheckCircle2 size={16} style={{ color: 'var(--accent)', flexShrink: 0 }} />
               <span>
                 <strong>{location.name}</strong> currently offers optimal weather efficiency ({weather?.temperatureC}°C ambient).
               </span>
@@ -483,13 +471,13 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           )}
 
           {/* Expected Output Length Buttons + Slider */}
-          <div style={{ marginTop: '1.25rem' }}>
+          <div style={{ marginTop: '20px' }}>
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '0.4rem',
+                marginBottom: '8px',
               }}
             >
               <label className="control-label">
@@ -498,8 +486,8 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               <span
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.8rem',
-                  color: 'var(--water-cyan-light)',
+                  fontSize: '0.8125rem',
+                  color: 'var(--text)',
                   fontWeight: 600,
                 }}
               >
@@ -507,7 +495,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               </span>
             </div>
 
-            <div className="length-buttons" style={{ marginBottom: '0.75rem' }}>
+            <div className="length-buttons" style={{ marginBottom: '12px' }}>
               <button
                 className={`length-btn ${getLengthCategory() === 'short' ? 'active' : ''}`}
                 id="length-btn-short"
@@ -544,7 +532,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           </div>
 
           {/* 3Blue1Brown Prefill vs Decoding Mathematical Phase Breakdown */}
-          <div className="phase-visualizer" style={{ marginTop: '1.5rem' }}>
+          <div className="phase-visualizer" style={{ marginTop: '24px' }}>
             <div
               style={{
                 display: 'flex',
@@ -554,22 +542,22 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
                 gap: '8px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Zap size={15} style={{ color: 'var(--energy-amber)' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Zap size={16} style={{ color: 'var(--accent)' }} />
                 <span
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.75rem',
-                    fontWeight: 700,
+                    fontWeight: 600,
                     letterSpacing: '0.05em',
                     textTransform: 'uppercase',
-                    color: 'var(--text-secondary)',
+                    color: 'var(--text)',
                   }}
                 >
                   Where Does the Energy Go? (Stojkovic / Li et al. 2025)
                 </span>
               </div>
-              <span className="badge badge-amber">Generating words uses ~2.3× more energy than reading them</span>
+              <span className="badge">Generating words uses ~2.3× more energy than reading them</span>
             </div>
 
             {/* KaTeX formula for Phase Scaling */}
@@ -577,7 +565,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               formula={`e_t = E_{\\text{base}} \\cdot \\left( 0.30 \\cdot \\frac{W_{\\text{in}}}{800} + 0.70 \\cdot \\frac{W_{\\text{out}}}{225} \\right)`}
             />
 
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.75rem', lineHeight: 1.45 }}>
+            <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '10px', lineHeight: 1.5 }}>
               Reading your prompt accounts for ~30% of baseline energy, while writing the answer takes ~70%. Because the computer must review all its mathematical weights for each new word it writes, long answers use far more electricity than long questions.
             </div>
 
@@ -604,7 +592,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               <div className="phase-legend-item">
                 <div className="phase-item-header">
                   <div className="phase-dot-prompt" />
-                  <span style={{ color: 'var(--energy-amber-light)' }}>
+                  <span style={{ color: 'var(--text)' }}>
                     1. Reading Phase (Prompt Reading, ~30% base energy)
                   </span>
                 </div>
@@ -616,7 +604,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               <div className="phase-legend-item">
                 <div className="phase-item-header">
                   <div className="phase-dot-token" />
-                  <span style={{ color: 'var(--water-cyan-light)' }}>
+                  <span style={{ color: 'var(--text)' }}>
                     2. Answering Phase (Generating Words, ~70% base energy)
                   </span>
                 </div>
@@ -634,7 +622,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
         <div className="receipt-card" id="environmental-receipt">
           <div className="receipt-header">
             <div className="receipt-badge-title">Calculated Impact</div>
-            <h3 className="receipt-title font-display">Environmental Receipt</h3>
+            <h3 className="receipt-title">Environmental Receipt</h3>
             <div className="receipt-meta-row">
               <span>{model.name}</span>
               <span>{FORMATTED_DATE}</span>
@@ -646,10 +634,10 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           <div className="receipt-toggles">
             <div className="receipt-toggle-row">
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>
                   Water Accounting: {waterMode === 'consumption' ? 'Permanent Evaporation' : 'Total Withdrawn'}
                 </span>
-                <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                   {waterMode === 'consumption'
                     ? 'Permanent evaporation into air (turned to steam and lost from watershed)'
                     : 'Total freshwater pumped (includes water cycled through pipes and returned)'}
@@ -657,33 +645,15 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               </div>
               <div style={{ display: 'flex', gap: '4px' }}>
                 <button
-                  className={`btn btn-ghost`}
+                  className={waterMode === 'consumption' ? 'btn-primary btn-sm' : 'btn-secondary btn-sm'}
                   id="water-mode-consumption-btn"
-                  style={{
-                    padding: '3px 8px',
-                    fontSize: '0.7rem',
-                    background:
-                      waterMode === 'consumption' ? 'rgba(6, 182, 212, 0.25)' : 'transparent',
-                    color: waterMode === 'consumption' ? 'var(--water-cyan-light)' : 'var(--text-muted)',
-                    borderColor:
-                      waterMode === 'consumption' ? 'var(--water-cyan)' : 'var(--border-subtle)',
-                  }}
                   onClick={() => setWaterMode('consumption')}
                 >
                   Consumed
                 </button>
                 <button
-                  className={`btn btn-ghost`}
+                  className={waterMode === 'withdrawal' ? 'btn-primary btn-sm' : 'btn-secondary btn-sm'}
                   id="water-mode-withdrawal-btn"
-                  style={{
-                    padding: '3px 8px',
-                    fontSize: '0.7rem',
-                    background:
-                      waterMode === 'withdrawal' ? 'rgba(6, 182, 212, 0.25)' : 'transparent',
-                    color: waterMode === 'withdrawal' ? 'var(--water-cyan-light)' : 'var(--text-muted)',
-                    borderColor:
-                      waterMode === 'withdrawal' ? 'var(--water-cyan)' : 'var(--border-subtle)',
-                  }}
                   onClick={() => setWaterMode('withdrawal')}
                 >
                   Withdrawn (13.95×)
@@ -693,10 +663,10 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
 
             <div className="receipt-toggle-row">
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>
                   Include Idle Server Overhead
                 </span>
-                <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                   Servers draw electricity even when waiting between user queries. Factoring in idle time (based on 25% server utilization from Xiao et al., 2025) reflects the real-world cost of keeping equipment running 24/7.
                 </span>
               </div>
@@ -714,9 +684,9 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
 
           {/* Hero Metrics Grid */}
           <div className="metrics-hero-grid">
-            <div className="metric-hero-block amber">
+            <div className="metric-hero-block">
               <span className="metric-hero-label">Electricity Used</span>
-              <span className="metric-hero-value glow-amber">
+              <span className="metric-hero-value">
                 {calculation.energyWh < 0.1
                   ? calculation.energyWh.toFixed(3)
                   : calculation.energyWh.toFixed(2)}
@@ -724,19 +694,19 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               <span className="metric-hero-unit">Watt-hours (Wh)</span>
             </div>
 
-            <div className="metric-hero-block cyan">
+            <div className="metric-hero-block">
               <span className="metric-hero-label">
                 {waterMode === 'consumption' ? 'Water Consumed' : 'Water Withdrawn'}
               </span>
-              <span className="metric-hero-value glow-cyan">
+              <span className="metric-hero-value">
                 {calculation.displayedTotalWaterMl.toFixed(1)}
               </span>
               <span className="metric-hero-unit">Milliliters (mL)</span>
             </div>
 
-            <div className="metric-hero-block coral">
+            <div className="metric-hero-block">
               <span className="metric-hero-label">Carbon Emissions</span>
-              <span className="metric-hero-value glow-coral">
+              <span className="metric-hero-value">
                 {calculation.carbonGrams.toFixed(2)}
               </span>
               <span className="metric-hero-unit">Grams (gCO₂e)</span>
@@ -749,12 +719,13 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontSize: '0.75rem',
+                fontSize: '0.8125rem',
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               <span>Where the Water is Used</span>
-              <span style={{ color: 'var(--water-cyan-light)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>
                 {calculation.displayedTotalWaterMl.toFixed(1)} mL Total
               </span>
             </div>
@@ -773,26 +744,26 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
             </div>
 
             <div className="scope-labels">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span
                   style={{
-                    width: '7px',
-                    height: '7px',
+                    width: '8px',
+                    height: '8px',
                     borderRadius: '50%',
-                    background: '#06b6d4',
+                    background: 'var(--text-muted)',
                   }}
                 />
                 <span>
                   Scope 1 On-Site: {calculation.displayedScope1WaterMl.toFixed(1)} mL ({calculation.scope1Percent}%) evaporated in cooling towers
                 </span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span
                   style={{
-                    width: '7px',
-                    height: '7px',
+                    width: '8px',
+                    height: '8px',
                     borderRadius: '50%',
-                    background: '#3b82f6',
+                    background: 'var(--accent)',
                   }}
                 />
                 <span>
@@ -816,15 +787,15 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
             <div>
               <div
                 style={{
-                  fontSize: '0.82rem',
-                  fontWeight: 700,
-                  color: 'var(--water-cyan-light)',
+                  fontSize: '0.875rem',
+                  fontWeight: 600,
+                  color: 'var(--text)',
                   fontFamily: 'var(--font-mono)',
                 }}
               >
                 {(calculation.bottleFraction * 100).toFixed(1)}% of a 500 mL Water Bottle
               </div>
-              <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 Equivalent to evaporating ~<strong>{calculation.waterDrops}</strong> standard drops
                 of clean drinking water.
               </div>
@@ -834,13 +805,13 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           {/* Tangible Everyday Equivalents */}
           <div className="equivalents-section">
             <div className="equivalents-title">
-              <Lightbulb size={12} />
+              <Lightbulb size={14} />
               <span>Relatable Everyday Equivalents</span>
             </div>
 
             <div className="equivalents-grid">
               <div className="equiv-card">
-                <div className="equiv-icon-box" style={{ color: 'var(--energy-amber)' }}>
+                <div className="equiv-icon-box">
                   <Lightbulb size={16} />
                 </div>
                 <div>
@@ -850,7 +821,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               </div>
 
               <div className="equiv-card">
-                <div className="equiv-icon-box" style={{ color: 'var(--water-cyan)' }}>
+                <div className="equiv-icon-box">
                   <Smartphone size={16} />
                 </div>
                 <div>
@@ -862,7 +833,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               </div>
 
               <div className="equiv-card">
-                <div className="equiv-icon-box" style={{ color: 'var(--carbon-coral)' }}>
+                <div className="equiv-icon-box">
                   <Car size={16} />
                 </div>
                 <div>
@@ -872,7 +843,7 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
               </div>
 
               <div className="equiv-card">
-                <div className="equiv-icon-box" style={{ color: 'var(--eco-emerald)' }}>
+                <div className="equiv-icon-box">
                   <Server size={16} />
                 </div>
                 <div>
@@ -886,14 +857,14 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
           </div>
 
           {/* Copy Receipt Action button */}
-          <div style={{ marginTop: '1.25rem' }}>
+          <div style={{ marginTop: '16px' }}>
             <button
-              className="btn btn-cyan"
+              className="btn-primary"
               id="copy-receipt-btn"
               onClick={copyReceiptSummary}
-              style={{ width: '100%', padding: '10px 16px', fontSize: '0.82rem', borderRadius: '8px' }}
+              style={{ width: '100%' }}
             >
-              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? <Check size={16} /> : <Copy size={16} />}
               <span>{copied ? 'Copied Receipt to Clipboard!' : 'Copy Environmental Receipt'}</span>
             </button>
           </div>
@@ -902,3 +873,5 @@ Calculated using peer-reviewed formulations from Li et al. (2025) & Xiao et al. 
     </div>
   );
 };
+
+export default ModuleASandbox;

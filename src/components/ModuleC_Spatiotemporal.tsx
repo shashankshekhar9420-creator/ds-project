@@ -127,7 +127,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <h4 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, fontWeight: 700 }}>
+                  <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700 }}>
                     {location.name} Weather & Temp
                   </h4>
                   <span className={`badge ${weather?.isLive ? 'badge-cyan' : 'badge-amber'}`} style={{ fontSize: '0.625rem', padding: '1px 6px' }}>
@@ -205,7 +205,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <h4 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, fontWeight: 700 }}>
+                  <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700 }}>
                     Electrical Grid & Demand
                   </h4>
                   <span className={`badge ${electricity?.isLive ? 'badge-emerald' : 'badge-amber'}`} style={{ fontSize: '0.625rem', padding: '1px 6px' }}>
@@ -265,7 +265,7 @@ export const ModuleCSpatiotemporal: React.FC<ModuleCSpatiotemporalProps> = ({
                     color: 'var(--text-secondary)',
                   }}
                 >
-                  {g.fuel}: <strong style={{ color: '#fff' }}>{g.percentage}%</strong>
+                  {g.fuel}: <strong style={{ color: 'var(--text-primary)' }}>{g.percentage}%</strong>
                 </span>
               ))}
             </div>

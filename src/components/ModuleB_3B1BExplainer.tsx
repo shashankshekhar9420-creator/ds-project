@@ -3,7 +3,6 @@ import {
   Play,
   Pause,
   Thermometer,
-  BookOpen,
   Cpu,
   Layers,
   Database,
@@ -67,11 +66,11 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       tick++;
 
       // Clear Canvas
-      ctx.fillStyle = '#060913';
+      ctx.fillStyle = '#f8fafc';
       ctx.fillRect(0, 0, width, height);
 
       // Subtle Grid Lines
-      ctx.strokeStyle = 'rgba(148, 163, 184, 0.04)';
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.15)';
       ctx.lineWidth = 1;
       const gridSize = 40;
       for (let x = 0; x < width; x += gridSize) {
@@ -92,7 +91,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
 
       ctx.save();
       ctx.setLineDash([4, 6]);
-      ctx.strokeStyle = 'rgba(148, 163, 184, 0.15)';
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.35)';
       ctx.beginPath();
       ctx.moveTo(midX, 36);
       ctx.lineTo(midX, height - 24);
@@ -103,11 +102,11 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       ctx.font = '600 12px Inter, sans-serif';
 
       // Scope 1 Label
-      ctx.fillStyle = activeScope === 'scope2' ? 'rgba(6, 182, 212, 0.25)' : '#06b6d4';
+      ctx.fillStyle = activeScope === 'scope2' ? 'rgba(2, 132, 199, 0.25)' : '#0284c7';
       ctx.fillText('SCOPE 1: ON-SITE EVAPORATIVE COOLING (29%)', 28, 28);
 
       // Scope 2 Label
-      ctx.fillStyle = activeScope === 'scope1' ? 'rgba(59, 130, 246, 0.25)' : '#3b82f6';
+      ctx.fillStyle = activeScope === 'scope1' ? 'rgba(37, 99, 235, 0.25)' : '#2563eb';
       ctx.fillText('SCOPE 2: OFF-SITE POWER GENERATION (71%)', midX + 28, 28);
 
       // ========================================================================
@@ -122,8 +121,8 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       const rackW = 110;
       const rackH = 190;
 
-      ctx.fillStyle = '#0f172a';
-      ctx.strokeStyle = '#334155';
+      ctx.fillStyle = '#ffffff';
+      ctx.strokeStyle = '#cbd5e1';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.roundRect(rackX, rackY, rackW, rackH, 6);
@@ -133,7 +132,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       // Server blades
       for (let b = 0; b < 6; b++) {
         const bladeY = rackY + 14 + b * 28;
-        ctx.fillStyle = '#1e293b';
+        ctx.fillStyle = '#f1f5f9';
         ctx.fillRect(rackX + 8, bladeY, rackW - 16, 20);
 
         const isGpuActive = Math.sin(tick * 0.05 + b) > -0.2;
@@ -186,8 +185,8 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       ctx.fillText('← Chilled Loop', rackX + rackW + 8, rackY + 132);
 
       // Cooling Tower Graphic
-      ctx.fillStyle = '#0f172a';
-      ctx.strokeStyle = '#38bdf8';
+      ctx.fillStyle = '#f1f5f9';
+      ctx.strokeStyle = '#0284c7';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(towerX, towerY + towerH);
@@ -198,7 +197,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       ctx.fill();
       ctx.stroke();
 
-      ctx.fillStyle = '#38bdf8';
+      ctx.fillStyle = '#0284c7';
       ctx.font = '600 11px Inter, sans-serif';
       ctx.fillText('Cooling Tower', towerX + 6, towerY - 8);
 
@@ -225,7 +224,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       ctx.globalAlpha = isScope2Dimmed ? 0.25 : 1.0;
 
       // Power Lines connecting right to left
-      ctx.strokeStyle = 'rgba(234, 179, 8, 0.4)';
+      ctx.strokeStyle = 'rgba(202, 138, 4, 0.4)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(midX + 20, rackY + 95);
@@ -234,7 +233,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
 
       // Electron dots moving leftward
       const electronOffset = (tick * 2) % (rackX + rackW - (midX + 20));
-      ctx.fillStyle = '#fde047';
+      ctx.fillStyle = '#ca8a04';
       ctx.beginPath();
       ctx.arc(midX + 20 + electronOffset, rackY + 95, 3, 0, Math.PI * 2);
       ctx.fill();
@@ -245,8 +244,8 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       const plantW = 60;
       const plantH = 180;
 
-      ctx.fillStyle = '#1e293b';
-      ctx.strokeStyle = '#475569';
+      ctx.fillStyle = '#f1f5f9';
+      ctx.strokeStyle = '#64748b';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(plantX, plantY + plantH);
@@ -257,7 +256,7 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       ctx.fill();
       ctx.stroke();
 
-      ctx.fillStyle = '#94a3b8';
+      ctx.fillStyle = '#475569';
       ctx.font = '600 11px Inter, sans-serif';
       ctx.fillText('Thermal Plant', plantX, plantY - 8);
 
@@ -283,17 +282,17 @@ export const ModuleB3B1BExplainer: React.FC = () => {
       const damH = 130;
 
       // Dam Wall
-      ctx.fillStyle = '#334155';
+      ctx.fillStyle = '#cbd5e1';
       ctx.fillRect(damX, damY, 35, damH);
 
       // Water Reservoir Body
       const waterGrad = ctx.createLinearGradient(damX + 35, damY, damX + damW, damY + damH);
-      waterGrad.addColorStop(0, '#0284c7');
-      waterGrad.addColorStop(1, '#0369a1');
+      waterGrad.addColorStop(0, '#38bdf8');
+      waterGrad.addColorStop(1, '#0284c7');
       ctx.fillStyle = waterGrad;
       ctx.fillRect(damX + 35, damY + 25, damW - 35, damH - 25);
 
-      ctx.fillStyle = '#38bdf8';
+      ctx.fillStyle = '#0284c7';
       ctx.font = '600 11px Inter, sans-serif';
       ctx.fillText('Hydro Reservoir', damX + 35, damY + 14);
 
@@ -328,16 +327,16 @@ export const ModuleB3B1BExplainer: React.FC = () => {
 
         if (p.type === 'steam') {
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
-          grad.addColorStop(0, `rgba(224, 242, 254, ${currentAlpha})`);
-          grad.addColorStop(0.5, `rgba(186, 230, 253, ${currentAlpha * 0.5})`);
-          grad.addColorStop(1, 'rgba(186, 230, 253, 0)');
+          grad.addColorStop(0, `rgba(100, 116, 139, ${currentAlpha * 0.4})`);
+          grad.addColorStop(0.5, `rgba(148, 163, 184, ${currentAlpha * 0.2})`);
+          grad.addColorStop(1, 'rgba(148, 163, 184, 0)');
 
           ctx.fillStyle = grad;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.fill();
         } else if (p.type === 'water') {
-          ctx.fillStyle = `rgba(56, 189, 248, ${currentAlpha * 0.6})`;
+          ctx.fillStyle = `rgba(2, 132, 199, ${currentAlpha * 0.7})`;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius * 0.6, 0, Math.PI * 2);
           ctx.fill();
@@ -365,41 +364,37 @@ export const ModuleB3B1BExplainer: React.FC = () => {
 
   return (
     <div className="explainer-container" id="explainer-module">
-      {/* Editorial Header */}
-      <div style={{ marginBottom: '0.25rem' }}>
-        <div className="pill-badge-luxury" style={{ display: 'inline-flex', marginBottom: '0.5rem' }}>
-          <BookOpen size={12} />
-          <span>EDUCATION & VERIFIED METHODOLOGY</span>
-        </div>
-        <h1 className="font-display" style={{ fontSize: '1.85rem', color: '#fff', letterSpacing: '-0.02em' }}>
-          The Physical Thermodynamics of AI Inference
-        </h1>
-        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', maxWidth: '820px', marginTop: '0.35rem', lineHeight: 1.55 }}>
-          Understand how electrical energy turns into heat, why datacenters evaporate potable water, and inspect the empirical token calculation formulas and reliability limits verified across four landmark research papers.
+      {/* Section Header */}
+      <div style={{ marginBottom: '0.5rem' }}>
+        <h2 className="font-display" style={{ fontSize: '1.35rem', color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '0.25rem' }}>
+          Physical Thermodynamics of AI Inference
+        </h2>
+        <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', maxWidth: '820px', lineHeight: 1.5 }}>
+          Understand how electrical energy converts into heat across GPU silicon dies, why cooling towers evaporate municipal drinking water, and how power grids draw cooling water at off-site generation plants.
         </p>
       </div>
 
       {/* Segmented Sub-Navigation Pills */}
-      <div className="sub-nav-segmented" style={{ display: 'flex', gap: '6px', background: 'rgba(255, 255, 255, 0.04)', padding: '4px', borderRadius: '10px', border: '1px solid var(--border-subtle)', width: 'fit-content' }}>
+      <div className="sub-nav-segmented" style={{ display: 'flex', gap: '4px', background: 'var(--bg-subtle)', padding: '3px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', width: 'fit-content' }}>
         <button
           className={`sub-nav-pill ${activeSubTab === 'canvas' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('canvas')}
           style={{
-            padding: '6px 14px',
-            fontSize: '0.8rem',
-            borderRadius: '7px',
+            padding: '5px 12px',
+            fontSize: '0.78125rem',
+            borderRadius: 'var(--radius-sm)',
             border: 'none',
             cursor: 'pointer',
-            background: activeSubTab === 'canvas' ? '#ffffff' : 'transparent',
-            color: activeSubTab === 'canvas' ? '#000000' : 'var(--text-muted)',
+            background: activeSubTab === 'canvas' ? 'var(--text-primary)' : 'transparent',
+            color: activeSubTab === 'canvas' ? '#ffffff' : 'var(--text-secondary)',
             fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            transition: 'all 0.18s ease',
+            gap: '5px',
+            transition: 'all 0.15s ease',
           }}
         >
-          <Layers size={14} />
+          <Layers size={13} />
           <span>Thermodynamics Simulation</span>
         </button>
 
@@ -407,21 +402,21 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           className={`sub-nav-pill ${activeSubTab === 'token-methodology' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('token-methodology')}
           style={{
-            padding: '6px 14px',
-            fontSize: '0.8rem',
-            borderRadius: '7px',
+            padding: '5px 12px',
+            fontSize: '0.78125rem',
+            borderRadius: 'var(--radius-sm)',
             border: 'none',
             cursor: 'pointer',
-            background: activeSubTab === 'token-methodology' ? '#ffffff' : 'transparent',
-            color: activeSubTab === 'token-methodology' ? '#000000' : 'var(--text-muted)',
+            background: activeSubTab === 'token-methodology' ? 'var(--text-primary)' : 'transparent',
+            color: activeSubTab === 'token-methodology' ? '#ffffff' : 'var(--text-secondary)',
             fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            transition: 'all 0.18s ease',
+            gap: '5px',
+            transition: 'all 0.15s ease',
           }}
         >
-          <Cpu size={14} />
+          <Cpu size={13} />
           <span>Token Calculation & Reliability</span>
         </button>
 
@@ -429,21 +424,21 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           className={`sub-nav-pill ${activeSubTab === 'formulations' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('formulations')}
           style={{
-            padding: '6px 14px',
-            fontSize: '0.8rem',
-            borderRadius: '7px',
+            padding: '5px 12px',
+            fontSize: '0.78125rem',
+            borderRadius: 'var(--radius-sm)',
             border: 'none',
             cursor: 'pointer',
-            background: activeSubTab === 'formulations' ? '#ffffff' : 'transparent',
-            color: activeSubTab === 'formulations' ? '#000000' : 'var(--text-muted)',
+            background: activeSubTab === 'formulations' ? 'var(--text-primary)' : 'transparent',
+            color: activeSubTab === 'formulations' ? '#ffffff' : 'var(--text-secondary)',
             fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            transition: 'all 0.18s ease',
+            gap: '5px',
+            transition: 'all 0.15s ease',
           }}
         >
-          <Scale size={14} />
+          <Scale size={13} />
           <span>Mathematical Formulations</span>
         </button>
 
@@ -451,21 +446,21 @@ export const ModuleB3B1BExplainer: React.FC = () => {
           className={`sub-nav-pill ${activeSubTab === 'papers' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('papers')}
           style={{
-            padding: '6px 14px',
-            fontSize: '0.8rem',
-            borderRadius: '7px',
+            padding: '5px 12px',
+            fontSize: '0.78125rem',
+            borderRadius: 'var(--radius-sm)',
             border: 'none',
             cursor: 'pointer',
-            background: activeSubTab === 'papers' ? '#ffffff' : 'transparent',
-            color: activeSubTab === 'papers' ? '#000000' : 'var(--text-muted)',
+            background: activeSubTab === 'papers' ? 'var(--text-primary)' : 'transparent',
+            color: activeSubTab === 'papers' ? '#ffffff' : 'var(--text-secondary)',
             fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            transition: 'all 0.18s ease',
+            gap: '5px',
+            transition: 'all 0.15s ease',
           }}
         >
-          <FileText size={14} />
+          <FileText size={13} />
           <span>Foundational Papers</span>
         </button>
       </div>

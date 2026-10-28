@@ -426,9 +426,9 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
               style={{
                 marginTop: '1rem',
                 padding: '0.85rem 1rem',
-                background: 'rgba(6, 182, 212, 0.06)',
-                border: '1px solid rgba(6, 182, 212, 0.25)',
-                borderRadius: '8px',
+                background: '#f0f9ff',
+                border: '1px solid #bae6fd',
+                borderRadius: 'var(--radius-sm)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -437,9 +437,9 @@ Calculated via peer-reviewed formulations from Li et al. (2025) & Xiao et al. (2
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <CloudSun size={18} style={{ color: 'var(--water-cyan-light)', flexShrink: 0 }} />
+                <CloudSun size={18} style={{ color: 'var(--water-cyan)', flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#fff' }}>
+                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                     Weather Optimization: {weatherRecommendation.bestOverall.location.name} is cooler ({weatherRecommendation.bestOverall.weather.temperatureC}°C vs {weather?.temperatureC}°C)
                   </div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>

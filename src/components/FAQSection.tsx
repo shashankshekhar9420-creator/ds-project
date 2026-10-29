@@ -54,6 +54,13 @@ export const FAQSection: React.FC = () => {
         'Smaller models (like 8-billion parameter models or Mixture-of-Experts) do use significantly less electricity per query—often cutting power by 50% to 80%. However, when AI becomes faster and cheaper, people and companies tend to use it far more often—embedding it into search engines, autocomplete tools, and automated bots. Economists call this the Rebound Effect (or Jevons’ Paradox): making technology more efficient often leads to greater total consumption unless overall usage is managed.',
       citation: 'Xiao et al. (2025) Scenario 3 & Jevons (1865)',
     },
+    {
+      id: 'faq-7',
+      question: 'How does image and video generation compare to asking a chatbot a text question?',
+      answer:
+        'Generating images and videos requires radically more electricity than generating text. A standard text query takes around 0.24 to 4 watt-hours, whereas generating a single high-quality image uses 2 to 4 watt-hours, and generating a 5-second video (like WAN2.1) draws around 90 watt-hours—equivalent to over 22 full chatbot conversations or nearly 400 text queries! Furthermore, Bertazzini et al. (2025) proved that prompt length has no measurable effect on image energy (p > 0.05); your resolution settings and frame count drive over 99% of the footprint, with video scaling quadratically.',
+      citation: 'Delavande et al. (2025), Iyengar et al. (2025), & Bertazzini et al. (2025)',
+    },
   ];
 
   const toggleFAQ = (id: string) => {

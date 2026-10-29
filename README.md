@@ -1,7 +1,8 @@
 # AI Water & Energy Footprint Simulator
 
 > **Live Deployment:** [https://shashankshekhar9420-creator.github.io/ds-project/](https://shashankshekhar9420-creator.github.io/ds-project/)  
-> **Scientific Monograph:** [https://shashankshekhar9420-creator.github.io/ds-project/report.html](https://shashankshekhar9420-creator.github.io/ds-project/report.html)
+> **Scientific Monograph:** [https://shashankshekhar9420-creator.github.io/ds-project/report.html](https://shashankshekhar9420-creator.github.io/ds-project/report.html)  
+> **Mathematical Formulations Reference:** [MATHEMATICAL_CALCULATIONS.md](./MATHEMATICAL_CALCULATIONS.md)
 
 A publication-grade interactive simulator and 3Blue1Brown-style explorable explanation of generative AI inference's energy, water, and carbon footprint based on peer-reviewed empirical literature (Li et al. CACM 2025, Xiao et al. Nature Sustainability 2025, Radovanović et al. Google CICS).
 

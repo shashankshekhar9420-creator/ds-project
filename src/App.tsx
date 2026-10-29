@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Header } from './components/Header';
 import { ModuleASandbox } from './components/ModuleA_Sandbox';
+import { ModuleMediaSandbox } from './components/ModuleMediaSandbox';
 import { ModuleB3B1BExplainer } from './components/ModuleB_3B1BExplainer';
 import { ModuleCSpatiotemporal } from './components/ModuleC_Spatiotemporal';
 import { CitationsSection } from './components/CitationsSection';
@@ -189,12 +190,38 @@ export const App: React.FC = () => {
         </section>
 
         {/* =========================================================================
-            FEATURE 02: Physical Methodology & Thermodynamics (Scope 1 vs Scope 2)
+            FEATURE 02 (GENERATIVE MEDIA): Image & Video Diffusion Footprint
+            ========================================================================= */}
+        <section className="feature-section" id="feature-media">
+          <div className="feature-header">
+            <div className="feature-tag-row">
+              <span className="feature-number-badge">Feature 02</span>
+              <span className="feature-category">Generative Media Sandbox</span>
+            </div>
+            <h2 className="feature-title">Image and Video Diffusion Footprint</h2>
+            <p className="feature-desc">
+              Text generation is just the beginning. Diffusion models for images and videos consume up to <strong>30× to 2,000× more energy</strong> per generation than text prompts.
+              Unlike text queries, <strong>prompt length has no statistically significant effect on diffusion energy</strong> (Bertazzini et al., 2025).
+              Instead, spatial resolution and video frame counts scale <strong>quadratically</strong> (Delavande et al., 2025).
+            </p>
+          </div>
+
+          <ModuleMediaSandbox
+            location={location}
+            weather={weather}
+            waterMode={waterMode}
+            includeIdlePenalty={includeIdlePenalty}
+            upgrades={BASELINE_UPGRADES}
+          />
+        </section>
+
+        {/* =========================================================================
+            FEATURE 03: Physical Methodology & Thermodynamics (Scope 1 vs Scope 2)
             ========================================================================= */}
         <section className="feature-section" id="feature-physics">
           <div className="feature-header">
             <div className="feature-tag-row">
-              <span className="feature-number-badge">Feature 02</span>
+              <span className="feature-number-badge">Feature 03</span>
               <span className="feature-category">How It Works</span>
             </div>
             <h2 className="feature-title">Where Does the Water Actually Go?</h2>
@@ -211,12 +238,12 @@ export const App: React.FC = () => {
         </section>
 
         {/* =========================================================================
-            FEATURE 03: Global Data Centers & Spatiotemporal Grid Routing
+            FEATURE 04: Global Data Centers & Spatiotemporal Grid Routing
             ========================================================================= */}
         <section className="feature-section" id="feature-datacenters">
           <div className="feature-header">
             <div className="feature-tag-row">
-              <span className="feature-number-badge">Feature 03</span>
+              <span className="feature-number-badge">Feature 04</span>
               <span className="feature-category">Smart Routing</span>
             </div>
             <h2 className="feature-title">Global Data Centers and Green Grid Routing</h2>
@@ -240,12 +267,12 @@ export const App: React.FC = () => {
         </section>
 
         {/* =========================================================================
-            FEATURE 04: Mathematical Formulations & Derivations
+            FEATURE 05: Mathematical Formulations & Derivations
             ========================================================================= */}
         <section className="feature-section" id="feature-formulas">
           <div className="feature-header">
             <div className="feature-tag-row">
-              <span className="feature-number-badge">Feature 04</span>
+              <span className="feature-number-badge">Feature 05</span>
               <span className="feature-category">The Science & Equations</span>
             </div>
             <h2 className="feature-title">The Math Behind the Calculator</h2>
@@ -330,16 +357,51 @@ export const App: React.FC = () => {
                 This off-site water usage (EWIF) is often several times larger than the water evaporated at the data center building itself.
               </p>
             </div>
+
+            <div className="formula-card">
+              <div className="formula-card-title">
+                <span>5. Image Diffusion Scaling Law</span>
+                <span className="badge">Iyengar / Bertazzini (2025)</span>
+              </div>
+              <div className="formula-equation-box">
+                <MathFormula
+                  formula={`\\ln E = \\ln A + \\alpha \\ln(\\text{FLOPs} \\cdot 2^{\\mathbb{I}_{cfg}}) + \\beta_{dtype} \\mathbb{I}_{fp32} + \\beta_{res} \\ln\\left(\\frac{H \\times W}{256}\\right)`}
+                  displayMode={true}
+                />
+              </div>
+              <p className="formula-desc">
+                <strong>In plain words:</strong> Diffusion image generation is compute-bound, with denoising iterations accounting for over 90% of FLOPs.
+                Classifier-Free Guidance (CFG) doubles passes, while full precision (fp32) imposes an exponential memory bandwidth penalty ($e^{2.04} \\approx 7.7\\times$).
+                Bertazzini et al. (2025) proved prompt text length has no statistically significant effect on energy consumption ($p &gt; 0.05$).
+              </p>
+            </div>
+
+            <div className="formula-card">
+              <div className="formula-card-title">
+                <span>6. Video Diffusion Quadratic Scaling</span>
+                <span className="badge">Delavande et al. (2025)</span>
+              </div>
+              <div className="formula-equation-box">
+                <MathFormula
+                  formula={`E_{\\text{video}} \\approx E_{\\text{base}} \\cdot \\left(\\frac{H \\times W}{H_0 \\times W_0}\\right)^2 \\cdot \\left(\\frac{T}{T_0}\\right)^2 \\cdot \\left(\\frac{S}{S_0}\\right)`}
+                  displayMode={true}
+                />
+              </div>
+              <p className="formula-desc">
+                <strong>In plain words:</strong> Text-to-video generation scales <strong>quadratically</strong> in spatial resolution ($H \\times W$) and frame count ($T$), and <strong>linearly</strong> in denoising steps ($S$).
+                Because DiT attention compares every spatiotemporal patch against every other patch, doubling resolution dimensions costs $\\approx 16\\times$ more energy, and doubling frames costs $\\approx 4\\times$!
+              </p>
+            </div>
           </div>
         </section>
 
         {/* =========================================================================
-            FEATURE 05: Peer-Reviewed Citations & FAQ
+            FEATURE 06: Peer-Reviewed Citations & FAQ
             ========================================================================= */}
         <section className="feature-section" id="feature-citations">
           <div className="feature-header">
             <div className="feature-tag-row">
-              <span className="feature-number-badge">Feature 05</span>
+              <span className="feature-number-badge">Feature 06</span>
               <span className="feature-category">Sources & Common Questions</span>
             </div>
             <h2 className="feature-title">Scientific Literature & Helpful Answers</h2>

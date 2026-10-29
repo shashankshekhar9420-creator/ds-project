@@ -264,6 +264,33 @@ export const ReportView: React.FC<ReportViewProps> = ({
               {/* Feature 2 */}
               <div className="feature-card">
                 <div className="feature-card-header">
+                  <div className="feature-icon-badge amber">
+                    <Layers size={18} />
+                  </div>
+                  <div>
+                    <span className="feature-number">MODULE A • FEATURE 02</span>
+                    <h3 className="feature-title">Generative Media Diffusion Sandbox (Text-to-Image & Video)</h3>
+                  </div>
+                </div>
+                <p className="feature-desc">
+                  Extends the platform to visual generative AI across 16 open models and commercial proxies (WAN2.1, CogVideoX, LTX, SDXL, Flux.1, Qwen-Image, Sora/Veo proxies).
+                </p>
+                <div className="feature-details">
+                  <div className="detail-item">
+                    <strong>Prompt Length Independence:</strong> Incorporates empirical proof from Bertazzini et al. (2025) demonstrating that prompt length has no statistically significant effect on diffusion energy ($p &gt; 0.05$). Hardware resolution and denoising loops drive the footprint.
+                  </div>
+                  <div className="detail-item">
+                    <strong>Quadratic Video Scaling:</strong> Implements analytical DiT token modeling (<MathFormula formula={'\\ell = (1 + T/4) \\cdot \\frac{H}{16} \\cdot \\frac{W}{16}'} />) from Delavande et al. (2025), showing quadratic scaling in spatial resolution ($H \times W$) and frame count ($T$), and linear scaling in denoising steps ($S$).
+                  </div>
+                  <div className="detail-item">
+                    <strong>Cross-Modality Equivalence Receipts:</strong> Quantifies cross-modality footprint multipliers—revealing how a single 5.4s HD video clip (WAN2.1, 90.5 Wh) equals over 22 full GPT-3 chatbot conversations (4 Wh) or 375 lightweight text prompts.
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="feature-card">
+                <div className="feature-card-header">
                   <div className="feature-icon-badge cyan">
                     <Droplets size={18} />
                   </div>
@@ -753,6 +780,39 @@ export const ReportView: React.FC<ReportViewProps> = ({
                 <div>• u: Average inference utilization (u_active × r_active = 0.50 × 0.50 = 0.25).</div>
               </div>
             </div>
+
+            <div className="formula-block-card">
+              <h4>4. Diffusion Image Generation Scaling Law</h4>
+              <p>
+                From Iyengar et al. (2025) and Bertazzini et al. (2025), diffusion image inference energy is compute-bound, dominated by iterative denoising:
+              </p>
+              <MathFormula
+                formula={'\\ln E = \\ln A + \\alpha \\ln(\\text{FLOPs} \\cdot 2^{\\mathbb{I}_{cfg}}) + \\beta_{dtype} \\mathbb{I}_{fp32} + \\beta_{res} \\ln\\left(\\frac{H \\times W}{256}\\right)'}
+                displayMode={true}
+              />
+              <div className="parameter-definitions">
+                <div>• α ≈ 1.0: Confirms strictly compute-bound execution regime (0.989 on Flux, 0.969 on SD 3.5).</div>
+                <div>• β_dtype: Precision penalty for fp32 vs fp16 (e^2.04 ≈ 7.7× energy surge on Flux, e^1.90 ≈ 6.7× on SD 3.5).</div>
+                <div>• I_cfg: Classifier-Free Guidance indicator; CFG doubles required forward passes.</div>
+                <div>• Prompt Length Invariance: Kruskal-Wallis p &gt; 0.05 across all 17 models tested in Bertazzini et al. (2025).</div>
+              </div>
+            </div>
+
+            <div className="formula-block-card">
+              <h4>5. Analytical Video DiT FLOPs &amp; Quadratic Scaling Laws</h4>
+              <p>
+                From Delavande et al. (2025), latent 3D video diffusion token length and computational FLOPs follow quadratic scaling:
+              </p>
+              <MathFormula
+                formula={'\\ell = \\left(1 + \\frac{T}{4}\\right) \\frac{H}{16} \\frac{W}{16}, \\quad E_{\\text{video}} \\approx E_{\\text{base}} \\cdot \\left(\\frac{H \\times W}{H_0 \\times W_0}\\right)^2 \\cdot \\left(\\frac{T}{T_0}\\right)^2 \\cdot \\left(\\frac{S}{S_0}\\right)'}
+                displayMode={true}
+              />
+              <div className="parameter-definitions">
+                <div>• Spatial Scaling: Quadratic in pixel count (doubling both dimensions costs ≈ 16×).</div>
+                <div>• Temporal Scaling: Quadratic in frame count T (doubling frames costs ≈ 4×).</div>
+                <div>• Step Scaling: Strictly linear in denoising steps S (mean error 1.9% vs H100 meter).</div>
+              </div>
+            </div>
           </section>
 
           {/* Section 11: 18 Data Centers Empirical Audit */}
@@ -847,6 +907,38 @@ export const ReportView: React.FC<ReportViewProps> = ({
                 <div className="bib-content">
                   <strong>Stojkovic, J., Zhang, E. Z., & Torrellas, J. (2025).</strong> <em>"Energy Characterization and Optimization of Large Language Model Serving under SLOs."</em> IEEE Micro / ISCA 2025.
                   <div className="bib-doi">University of Illinois Urbana-Champaign.</div>
+                </div>
+              </div>
+
+              <div className="bib-item">
+                <div className="bib-num">[5]</div>
+                <div className="bib-content">
+                  <strong>Delavande, J., Pierrard, R., & Luccioni, S. (2025).</strong> <em>"Video Killed the Energy Budget: Characterizing the Latency and Power Regimes of Open Text-to-Video Models."</em> arXiv:2509.19222.
+                  <div className="bib-doi">CentraleSupélec & Hugging Face • Establishes quadratic video DiT scaling laws.</div>
+                </div>
+              </div>
+
+              <div className="bib-item">
+                <div className="bib-num">[6]</div>
+                <div className="bib-content">
+                  <strong>Iyengar, A., Han, J., Ruf, B., Grari, V., Detyniecki, M., & Ermon, S. (2025).</strong> <em>"Energy Scaling Laws for Diffusion Models: Quantifying Compute and Carbon Emissions in Image Generation."</em> arXiv:2511.17031.
+                  <div className="bib-doi">Stanford University & AXA • Formulates compute-bound image energy scaling and fp32 precision penalty.</div>
+                </div>
+              </div>
+
+              <div className="bib-item">
+                <div className="bib-num">[7]</div>
+                <div className="bib-content">
+                  <strong>Bertazzini, G., Albisani, C., Baracchi, D., Shullani, D., & Verdecchia, R. (2025).</strong> <em>"The Hidden Cost of an Image: Quantifying the Energy Consumption of AI Image Generation."</em> arXiv:2506.17016.
+                  <div className="bib-doi">University of Florence • Proves prompt length has no statistically significant effect on image energy (p &gt; 0.05).</div>
+                </div>
+              </div>
+
+              <div className="bib-item">
+                <div className="bib-num">[8]</div>
+                <div className="bib-content">
+                  <strong>Luccioni, A. S., Jernite, Y., & Strubell, E. (2024).</strong> <em>"Power Hungry Processing: Watts Driving the Cost of AI Deployment?"</em> ACM FAccT '24, doi:10.1145/3630106.3658542.
+                  <div className="bib-doi">Hugging Face & Carnegie Mellon University • First systematic cross-modality energy comparison.</div>
                 </div>
               </div>
             </div>

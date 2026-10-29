@@ -34,6 +34,30 @@ export const CitationsSection: React.FC = () => {
       institution: 'UIUC',
       impact: 'Proved that writing output words uses over twice as much electricity per word as reading prompt text, establishing the 30% reading / 70% answering baseline.',
     },
+    {
+      year: '2025',
+      authors: 'Delavande, Pierrard, & Luccioni',
+      title: 'Video Killed the Energy Budget: Characterizing the Latency and Power Regimes of Open Text-to-Video Models',
+      venue: 'arXiv:2509.19222 / Hugging Face',
+      institution: 'CentraleSupélec & Hugging Face',
+      impact: 'Formulated the analytical DiT model proving text-to-video energy scales quadratically with spatial resolution and frame count, and linearly with denoising steps.',
+    },
+    {
+      year: '2025',
+      authors: 'Iyengar, Han, Ruf, Grari, et al.',
+      title: 'Energy Scaling Laws for Diffusion Models: Quantifying Compute and Carbon Emissions in Image Generation',
+      venue: 'arXiv:2511.17031',
+      institution: 'Stanford University & AXA',
+      impact: 'Established that diffusion image generation is compute-bound (alpha ≈ 1.0) and that fp32 precision carries an exponential ~7x energy penalty over fp16.',
+    },
+    {
+      year: '2025',
+      authors: 'Bertazzini, Albisani, Baracchi, et al.',
+      title: 'The Hidden Cost of an Image: Quantifying the Energy Consumption of AI Image Generation',
+      venue: 'arXiv:2506.17016',
+      institution: 'University of Florence',
+      impact: 'Empirically tested 17 diffusion models and proved that prompt length has no statistically significant effect on energy (p > 0.05); output resolution drives footprint.',
+    },
   ];
 
   return (

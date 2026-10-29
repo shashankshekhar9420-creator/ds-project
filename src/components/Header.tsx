@@ -39,19 +39,22 @@ export const Header: React.FC<HeaderProps> = ({ weatherRecommendation, onOpenRep
           {/* Clean Minimal Anchor Navigation to Feature Sections */}
           <nav className="nav-tabs" aria-label="Feature Sections Navigation">
             <a href="#feature-query" className="nav-tab-btn">
-              <span>1. Query & Impact</span>
+              <span>1. Text Query</span>
+            </a>
+            <a href="#feature-media" className="nav-tab-btn">
+              <span>2. Image & Video</span>
             </a>
             <a href="#feature-physics" className="nav-tab-btn">
-              <span>2. Water Cycle</span>
+              <span>3. Water Cycle</span>
             </a>
             <a href="#feature-datacenters" className="nav-tab-btn">
-              <span>3. Datacenters</span>
+              <span>4. Datacenters</span>
             </a>
             <a href="#feature-formulas" className="nav-tab-btn">
-              <span>4. The Math</span>
+              <span>5. The Math</span>
             </a>
             <a href="#feature-citations" className="nav-tab-btn">
-              <span>5. Sources & FAQ</span>
+              <span>6. Sources & FAQ</span>
             </a>
           </nav>
 

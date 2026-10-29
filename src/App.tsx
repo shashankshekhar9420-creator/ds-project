@@ -365,14 +365,14 @@ export const App: React.FC = () => {
               </div>
               <div className="formula-equation-box">
                 <MathFormula
-                  formula={`\\ln E = \\ln A + \\alpha \\ln(\\text{FLOPs} \\cdot 2^{\\mathbb{I}_{cfg}}) + \\beta_{dtype} \\mathbb{I}_{fp32} + \\beta_{res} \\ln\\left(\\frac{H \\times W}{256}\\right)`}
+                  formula={`\\ln E = \\ln A + \\alpha \\ln(\\text{FLOPs} \\cdot 2^{\\mathbb{I}_{cfg}}) + \\beta_{\\text{dtype}} \\mathbb{I}_{fp32} + \\beta_{\\text{res}} \\ln\\left(\\frac{H \\times W}{256}\\right)`}
                   displayMode={true}
                 />
               </div>
               <p className="formula-desc">
-                <strong>In plain words:</strong> Diffusion image generation is compute-bound, with denoising iterations accounting for over 90% of FLOPs.
-                Classifier-Free Guidance (CFG) doubles passes, while full precision (fp32) imposes an exponential memory bandwidth penalty ($e^{2.04} \\approx 7.7\\times$).
-                Bertazzini et al. (2025) proved prompt text length has no statistically significant effect on energy consumption ($p &gt; 0.05$).
+                <strong>In plain words:</strong> Diffusion image generation is compute-bound, with denoising iterations accounting for over 90% of total FLOPs.
+                Classifier-Free Guidance (CFG) doubles the required forward passes, while unoptimized full precision (fp32) causes an exponential memory bandwidth penalty of approximately 7.7× over fp16.
+                Crucially, Bertazzini et al. (2025) proved prompt text length has no statistically significant effect on energy consumption (p &gt; 0.05); output resolution and step counts drive the footprint.
               </p>
             </div>
 
@@ -388,8 +388,8 @@ export const App: React.FC = () => {
                 />
               </div>
               <p className="formula-desc">
-                <strong>In plain words:</strong> Text-to-video generation scales <strong>quadratically</strong> in spatial resolution ($H \\times W$) and frame count ($T$), and <strong>linearly</strong> in denoising steps ($S$).
-                Because DiT attention compares every spatiotemporal patch against every other patch, doubling resolution dimensions costs $\\approx 16\\times$ more energy, and doubling frames costs $\\approx 4\\times$!
+                <strong>In plain words:</strong> Text-to-video generation scales <strong>quadratically</strong> in spatial resolution (height × width) and temporal frame count (T), while scaling <strong>linearly</strong> in denoising steps (S).
+                Because diffusion transformer attention compares every spatiotemporal patch against every other patch, doubling resolution dimensions costs approximately 16× more energy, and doubling the frame count costs approximately 4×!
               </p>
             </div>
           </div>

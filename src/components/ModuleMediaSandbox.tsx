@@ -314,49 +314,52 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
           {/* Video Controls */}
           {activeMediaTab === 'video' && (
             <>
-              <div className="controls-grid" style={{ marginTop: '20px' }}>
-                <div className="control-group">
-                  <label className="control-label" htmlFor="video-model-select">
-                    <span>Select Video Diffusion Model</span>
-                    <span
-                      style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        color: videoModel.provenance === 'measured' ? 'var(--accent)' : 'var(--text-muted)',
-                      }}
-                    >
-                      {videoModel.provenance === 'measured' ? 'Telemetry Measured' : 'Proxy Mode'}
-                    </span>
-                  </label>
-                  <select
-                    id="video-model-select"
-                    className="select-custom"
-                    value={videoModel.id}
-                    onChange={(e) => {
-                      const found = VIDEO_MODELS.find((m) => m.id === e.target.value);
-                      if (found) handleSelectVideoModel(found);
+              {/* Full-Width Video Model Selection */}
+              <div className="control-group" style={{ marginTop: '20px' }}>
+                <label className="control-label" htmlFor="video-model-select">
+                  <span style={{ fontWeight: 600 }}>Select Video Diffusion Model</span>
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      color: videoModel.provenance === 'measured' ? 'var(--accent)' : 'var(--text-muted)',
+                      whiteSpace: 'nowrap',
                     }}
                   >
-                    <optgroup label="Open-Source Models (Physical H100 Telemetry, Delavande et al. 2025)">
-                      {VIDEO_MODELS.filter((m) => m.provenance === 'measured').map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name} ({m.parameters}) — Baseline: {m.baseEnergyWh} Wh
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Commercial Closed Models (Estimated Proxy Mode)">
-                      {VIDEO_MODELS.filter((m) => m.provenance === 'proxy').map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name} [Proxy Mode]
-                        </option>
-                      ))}
-                    </optgroup>
-                  </select>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-                    {videoModel.note}
-                  </div>
+                    {videoModel.parameters} • {videoModel.provenance === 'measured' ? 'Telemetry Measured' : 'Proxy Mode'}
+                  </span>
+                </label>
+                <select
+                  id="video-model-select"
+                  className="select-custom"
+                  value={videoModel.id}
+                  onChange={(e) => {
+                    const found = VIDEO_MODELS.find((m) => m.id === e.target.value);
+                    if (found) handleSelectVideoModel(found);
+                  }}
+                >
+                  <optgroup label="Open-Source Models (Physical H100 Telemetry, Delavande et al. 2025)">
+                    {VIDEO_MODELS.filter((m) => m.provenance === 'measured').map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.name} ({m.parameters.replace(' Parameters', '')}) · {m.baseEnergyWh} Wh baseline
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Commercial Closed Models (Estimated Proxy Mode)">
+                    {VIDEO_MODELS.filter((m) => m.provenance === 'proxy').map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.name} · Estimated Proxy ({m.baseEnergyWh} Wh)
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  {videoModel.note}
                 </div>
+              </div>
 
+              {/* 2-Column Controls Grid for Video Parameters */}
+              <div className="controls-grid" style={{ marginTop: '16px' }}>
                 <div className="control-group">
                   <label className="control-label" htmlFor="video-res-select">
                     <span>Resolution Preset</span>
@@ -375,13 +378,11 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                     <option value="720x1280">720×1280 (HD Standard 16:9)</option>
                     <option value="1080x1920">1080×1920 (FHD — High Energy!)</option>
                   </select>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                     Doubling dimensions costs ~16× compute in DiT attention.
                   </div>
                 </div>
-              </div>
 
-              <div className="controls-grid" style={{ marginTop: '16px' }}>
                 <div className="control-group">
                   <label className="control-label" htmlFor="video-fps-select">
                     <span>Frame Rate (FPS)</span>
@@ -400,6 +401,9 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                     <option value={24}>24 fps (Cinematic standard)</option>
                     <option value={30}>30 fps (Mochi-1 high-framerate)</option>
                   </select>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                    Frame rate sets temporal density of generated video.
+                  </div>
                 </div>
 
                 <div className="control-group">
@@ -420,6 +424,31 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                     <option value={3}>3× (Typical prompt iteration)</option>
                     <option value={5}>5× (High quality curation)</option>
                   </select>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                    Rerunning generations to eliminate motion artifacts.
+                  </div>
+                </div>
+
+                <div className="control-group">
+                  <label className="control-label" htmlFor="video-clips-select">
+                    <span>Clips in Parallel</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      Batch Size
+                    </span>
+                  </label>
+                  <select
+                    id="video-clips-select"
+                    className="select-custom"
+                    value={videoClipCount}
+                    onChange={(e) => setVideoClipCount(Number(e.target.value))}
+                  >
+                    <option value={1}>1 Clip</option>
+                    <option value={2}>2 Clips (Parallel variation)</option>
+                    <option value={4}>4 Clips (Batch)</option>
+                  </select>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                    Number of video clips rendered in parallel.
+                  </div>
                 </div>
               </div>
 
@@ -470,73 +499,58 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                   onChange={(e) => setVideoSteps(Number(e.target.value))}
                 />
               </div>
-
-              <div className="controls-grid" style={{ marginTop: '16px' }}>
-                <div className="control-group">
-                  <label className="control-label" htmlFor="video-clips-select">
-                    <span>Clips in Parallel</span>
-                  </label>
-                  <select
-                    id="video-clips-select"
-                    className="select-custom"
-                    value={videoClipCount}
-                    onChange={(e) => setVideoClipCount(Number(e.target.value))}
-                  >
-                    <option value={1}>1 Clip</option>
-                    <option value={2}>2 Clips (Parallel variation)</option>
-                    <option value={4}>4 Clips (Batch)</option>
-                  </select>
-                </div>
-              </div>
             </>
           )}
 
           {/* Image Controls */}
           {activeMediaTab === 'image' && (
             <>
-              <div className="controls-grid" style={{ marginTop: '20px' }}>
-                <div className="control-group">
-                  <label className="control-label" htmlFor="image-model-select">
-                    <span>Select Image Diffusion Model</span>
-                    <span
-                      style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        color: imageModel.provenance === 'measured' ? 'var(--accent)' : 'var(--text-muted)',
-                      }}
-                    >
-                      {imageModel.provenance === 'measured' ? 'Telemetry Measured' : 'Proxy Mode'}
-                    </span>
-                  </label>
-                  <select
-                    id="image-model-select"
-                    className="select-custom"
-                    value={imageModel.id}
-                    onChange={(e) => {
-                      const found = IMAGE_MODELS.find((m) => m.id === e.target.value);
-                      if (found) handleSelectImageModel(found);
+              {/* Full-Width Image Model Selection */}
+              <div className="control-group" style={{ marginTop: '20px' }}>
+                <label className="control-label" htmlFor="image-model-select">
+                  <span style={{ fontWeight: 600 }}>Select Image Diffusion Model</span>
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      color: imageModel.provenance === 'measured' ? 'var(--accent)' : 'var(--text-muted)',
+                      whiteSpace: 'nowrap',
                     }}
                   >
-                    <optgroup label="Open-Source Models (Physical Meters, Bertazzini / Iyengar 2025)">
-                      {IMAGE_MODELS.filter((m) => m.provenance === 'measured').map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name} ({m.parameters}) — Baseline: {m.baseEnergyWh} Wh
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Commercial Cloud Models (Estimated Proxy Mode)">
-                      {IMAGE_MODELS.filter((m) => m.provenance === 'proxy').map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name} [Proxy Mode]
-                        </option>
-                      ))}
-                    </optgroup>
-                  </select>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-                    {imageModel.note}
-                  </div>
+                    {imageModel.parameters} • {imageModel.provenance === 'measured' ? 'Telemetry Measured' : 'Proxy Mode'}
+                  </span>
+                </label>
+                <select
+                  id="image-model-select"
+                  className="select-custom"
+                  value={imageModel.id}
+                  onChange={(e) => {
+                    const found = IMAGE_MODELS.find((m) => m.id === e.target.value);
+                    if (found) handleSelectImageModel(found);
+                  }}
+                >
+                  <optgroup label="Open-Source Models (Physical Meters, Bertazzini / Iyengar 2025)">
+                    {IMAGE_MODELS.filter((m) => m.provenance === 'measured').map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.name} ({m.parameters.replace(' Parameters', '')}) · {m.baseEnergyWh} Wh baseline
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Commercial Cloud Models (Estimated Proxy Mode)">
+                    {IMAGE_MODELS.filter((m) => m.provenance === 'proxy').map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.name} · Estimated Proxy ({m.baseEnergyWh} Wh)
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  {imageModel.note}
                 </div>
+              </div>
 
+              {/* 2-Column Controls Grid for Image Parameters */}
+              <div className="controls-grid" style={{ marginTop: '16px' }}>
                 <div className="control-group">
                   <label className="control-label" htmlFor="image-res-select">
                     <span>Output Resolution</span>
@@ -556,13 +570,11 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                     <option value="832x1216">832×1216 (Portrait 2:3)</option>
                     <option value="1216x832">1216×832 (Landscape 3:2)</option>
                   </select>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                     Empirical resolution scaling factor from Bertazzini et al. (2025).
                   </div>
                 </div>
-              </div>
 
-              <div className="controls-grid" style={{ marginTop: '16px' }}>
                 <div className="control-group">
                   <label className="control-label" htmlFor="image-precision-select">
                     <span>Computation Precision</span>
@@ -580,11 +592,29 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                     <option value="fp16">fp16 / BF16 (Standard Half-Precision)</option>
                     <option value="fp32">fp32 (Full Precision — ~7× Energy!)</option>
                   </select>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                     {imagePrecision === 'fp32'
                       ? 'Full precision causes a massive memory bandwidth bottleneck.'
                       : 'Standard half-precision optimized for modern tensor cores.'}
                   </div>
+                </div>
+
+                <div className="control-group">
+                  <label className="control-label" htmlFor="cfg-toggle">
+                    <span>Guidance (CFG)</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      {imageCfg ? '2 Passes' : '1 Pass'}
+                    </span>
+                  </label>
+                  <select
+                    id="cfg-toggle"
+                    className="select-custom"
+                    value={imageCfg ? 'on' : 'off'}
+                    onChange={(e) => setImageCfg(e.target.value === 'on')}
+                  >
+                    <option value="on">CFG Enabled (2 passes per step)</option>
+                    <option value="off">CFG Disabled / Distilled (1 pass per step)</option>
+                  </select>
                 </div>
 
                 <div className="control-group">
@@ -604,6 +634,25 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                     <option value={2}>2× (1 retry)</option>
                     <option value={4}>4× (Grid of 4)</option>
                     <option value={8}>8× (Extensive iteration)</option>
+                  </select>
+                </div>
+
+                <div className="control-group">
+                  <label className="control-label" htmlFor="image-count-select">
+                    <span>Batch Count</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      Outputs
+                    </span>
+                  </label>
+                  <select
+                    id="image-count-select"
+                    className="select-custom"
+                    value={imageCount}
+                    onChange={(e) => setImageCount(Number(e.target.value))}
+                  >
+                    <option value={1}>1 Image</option>
+                    <option value={2}>2 Images</option>
+                    <option value={4}>4 Images</option>
                   </select>
                 </div>
               </div>
@@ -628,42 +677,6 @@ Scientific Formulations: Delavande et al. (2025), Iyengar et al. (2025), Bertazz
                   value={imageSteps}
                   onChange={(e) => setImageSteps(Number(e.target.value))}
                 />
-              </div>
-
-              <div className="controls-grid" style={{ marginTop: '16px' }}>
-                <div className="control-group">
-                  <label className="control-label" htmlFor="cfg-toggle">
-                    <span>Guidance (CFG)</span>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                      {imageCfg ? '2 Passes (Doubles FLOPs)' : '1 Pass'}
-                    </span>
-                  </label>
-                  <select
-                    id="cfg-toggle"
-                    className="select-custom"
-                    value={imageCfg ? 'on' : 'off'}
-                    onChange={(e) => setImageCfg(e.target.value === 'on')}
-                  >
-                    <option value="on">CFG Enabled (2 forward passes per step)</option>
-                    <option value="off">CFG Disabled / Distilled (1 forward pass per step)</option>
-                  </select>
-                </div>
-
-                <div className="control-group">
-                  <label className="control-label" htmlFor="image-count-select">
-                    <span>Batch Count</span>
-                  </label>
-                  <select
-                    id="image-count-select"
-                    className="select-custom"
-                    value={imageCount}
-                    onChange={(e) => setImageCount(Number(e.target.value))}
-                  >
-                    <option value={1}>1 Image</option>
-                    <option value={2}>2 Images</option>
-                    <option value={4}>4 Images</option>
-                  </select>
-                </div>
               </div>
             </>
           )}

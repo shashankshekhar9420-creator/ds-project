@@ -137,6 +137,10 @@
   gap: 6px;
 }
 
+.control-group select.select-custom {
+  text-overflow: ellipsis;
+}
+
 .control-label {
   display: flex;
   align-items: center;
